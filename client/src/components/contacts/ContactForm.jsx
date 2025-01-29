@@ -115,10 +115,10 @@ const ContactForm = () => {
                 <li>
                   Contact Email:
                   <a
-                    href="mailto:mohitkumar143680@gmail.com"
+                    href="mailto:mohoratechnologiespvtltd@gmail.com"
                     className="text-blue-400 hover:underline"
                   >
-                    mohitkumar143680@gmail.com
+                    mohoratechnologiespvtltd@gmail.com
                   </a>
                 </li>
                 <li>
@@ -134,28 +134,28 @@ const ContactForm = () => {
                 <li>
                   Support Team:
                   <a
-                    href="mailto:mohitkumar143680@gmail.com"
+                    href="mailto:mohoratechnologiespvtltd@gmail.com"
                     className="text-blue-400 hover:underline"
                   >
-                    mohitkumar143680@gmail.com
+                    mohoratechnologiespvtltd@gmail.com
                   </a>
                 </li>
                 <li>
                   Sales Team:
                   <a
-                    href="mailto:mohitkumar143680@gmail.com"
+                    href="mailto:mohoratechnologiespvtltd@gmail.com"
                     className="text-blue-400 hover:underline"
                   >
-                    mohitkumar143680@gmail.com
+                    mohoratechnologiespvtltd@gmail.com
                   </a>
                 </li>
                 <li>
                   Business Inquiries:
                   <a
-                    href="mailto:mohitkumar143680@gmail.com"
+                    href="mailto:mohoratechnologiespvtltd@gmail.com"
                     className="text-blue-400 hover:underline"
                   >
-                    mohitkumar143680@gmail.com
+                    mohoratechnologiespvtltd@gmail.com
                   </a>
                 </li>
               </ul>

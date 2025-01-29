@@ -5,20 +5,15 @@ const Footer = () => {
   return (
     <footer className="bg-gray-800 text-white py-6 px-6 rounded-md">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* First Section */}
         <div className="space-y-4">
-          <p className="text-sm">
-            Streamline your workflow with our leading SaaS platform. Trusted by
-            over 10,000 happy customers.
-          </p>
           <ul className="space-y-2 text-sm">
             <li>
               Contact Email:
               <a
-                href="mailto:mohitkumar143680@gmail.com"
+                href="mailto:mohoratechnologiespvtltd@gmail.com"
                 className="text-blue-400 hover:underline"
               >
-                mohitkumar143680@gmail.com
+                mohoratechnologiespvtltd@gmail.com
               </a>
             </li>
             <li>
@@ -30,38 +25,36 @@ const Footer = () => {
                 +91 9065269192
               </a>
             </li>
-            <li>Mon to Fri (09:00 am – 09:00 pm)</li>
+            <li>Mon to Fri (09:00 am – 06:00 pm)</li>
             <li>
               Support Team:
               <a
-                href="mailto:mohitkumar143680@gmail.com"
+                href="mailto:mohoratechnologiespvtltd@gmail.com"
                 className="text-blue-400 hover:underline"
               >
-                mohitkumar143680@gmail.com
+                mohoratechnologiespvtltd@gmail.com
               </a>
             </li>
             <li>
               Sales Team:
               <a
-                href="mailto:mohitkumar143680@gmail.com"
+                href="mailto:mohoratechnologiespvtltd@gmail.com"
                 className="text-blue-400 hover:underline"
               >
-                mohitkumar143680@gmail.com
+                mohoratechnologiespvtltd@gmail.com
               </a>
             </li>
             <li>
               Business Inquiries:
               <a
-                href="mailto:mohitkumar143680@gmail.com"
+                href="mailto:mohoratechnologiespvtltd@gmail.com"
                 className="text-blue-400 hover:underline"
               >
-                mohitkumar143680@gmail.com
+                mohoratechnologiespvtltd@gmail.com
               </a>
             </li>
           </ul>
         </div>
-
-        {/* Second Section */}
         <div className="space-y-4">
           <h4 className="font-semibold">Our Services</h4>
           <ul className="space-y-2 text-sm">
@@ -71,8 +64,6 @@ const Footer = () => {
             <li>Mobile App Development</li>
           </ul>
         </div>
-
-        {/* Third Section */}
         <div className="space-y-4">
           <h4 className="font-semibold">Important Links</h4>
           <ul className="space-y-2 text-sm">
@@ -83,8 +74,6 @@ const Footer = () => {
             <li>Certifications</li>
           </ul>
         </div>
-
-        {/* Logo Section */}
         <div className="flex justify-center items-center">
           <img
             src="https://res.cloudinary.com/mohitsingh8954/image/upload/v1738087360/Figma_basics_1_dnzwnz.svg"
@@ -93,12 +82,10 @@ const Footer = () => {
           />
         </div>
       </div>
-
-      {/* Social Media Links */}
       <div className="container mx-auto text-center mt-6">
         <div className="flex justify-center space-x-6 mb-4">
           <a
-            href="https://www.facebook.com"
+            href="https://www.facebook.com/share/15uk7YtaNK/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-500 hover:text-blue-400 transition"
@@ -106,7 +93,7 @@ const Footer = () => {
             <FaFacebookF size={20} />
           </a>
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/mohoratechnologies/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-pink-500 hover:text-pink-400 transition"
@@ -114,7 +101,7 @@ const Footer = () => {
             <FaInstagram size={20} />
           </a>
           <a
-            href="https://www.linkedin.com"
+            href="https://www.linkedin.com/company/mohora-techonologies-pvt-ltd/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-700 hover:text-blue-600 transition"

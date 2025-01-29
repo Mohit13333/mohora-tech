@@ -13,7 +13,8 @@ import connectDB from "./config/connectDB.js";
 const app = express();
 app.use(express.json());
 const corsOptions = {
-  origin: "http://localhost:5173",
+  // origin: "http://localhost:5173",
+  origin: "https://mohora-tech.onrender.com",
   credentials: true,
 };
 
@@ -24,7 +25,6 @@ app.use("/api/admin", adminRouter,contactReplyRouter);
 app.use("/api/services", ServiceRouter);
 app.use("/api/faqs", faqRouter);
 app.use("/api/contacts", contactRouter);
-// app.use("/api/replies",contactReplyRouter);
 app.get("/", (req, res) => {
   res.end("Hello");
 });

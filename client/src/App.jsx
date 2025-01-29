@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { setUser } from "./components/auth/slice/authSlice";
 import { getUser } from "./components/auth/api/authApi";
 import { setError } from "./components/global/globalSlice/GlobalSlice";
+import NotFound from "./layouts/NotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -44,15 +45,10 @@ function App() {
               <Route path="/services" element={<Service />}></Route>
               <Route path="/contact" element={<ContactFormPage />}></Route>
               <Route path="/faqs" element={<FaqPage />}></Route>
-              <Route
-                path="/contact-details"
-                element={<ContactDetail />}
-              ></Route>
-              <Route
-                path="/admin-dashboard"
-                element={<AdminDashboard />}
-              ></Route>
+              <Route path="/contact-details" element={<ContactDetail />}></Route>
+              <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
               <Route path="/careers" element={<Career />}></Route>
+              <Route path="*" element={<NotFound />}></Route>
             </Routes>
           </main>
           <Footer />

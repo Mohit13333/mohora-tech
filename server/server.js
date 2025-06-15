@@ -14,9 +14,19 @@ import axios from "axios";
 
 const app = express();
 app.use(express.json());
+const allowedOrigins = [
+  "https://mohora-tech.onrender.com",
+  "https://mohoratechnologies.netlify.app/"
+];
+
 const corsOptions = {
-  // origin: "http://localhost:5173",
-  origin: "https://mohora-tech.onrender.com",
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
 };
 app.get("/", (req, res) => {
@@ -25,7 +35,7 @@ app.get("/", (req, res) => {
 
 cron.schedule("*/3 * * * *", async () => {
   try {
-    const response = await axios.get("https://mohora-tech.onrender.com/");
+    const response = await axios.get("https://mohoratechnologies.netlify.app/");
     console.log(`[CRON] Server pinged: ${response.status} - ${new Date().toLocaleString()}`);
   } catch (error) {
     console.error(`[CRON] Ping failed: ${error.message}`);

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
   // Mock navigation functions for demo
-  const navigate = (path) => {
-    console.log(`Navigating to: ${path}`);
-    // In real implementation, this would use react-router-dom
-  };
+  const navigate = useNavigate();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [countdown, setCountdown] = useState(10);
 

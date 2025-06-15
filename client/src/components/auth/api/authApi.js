@@ -16,12 +16,29 @@ apiClient.interceptors.request.use((config) => {
   return config;
 });
 
+apiClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response?.data?.isUserBlocked) {
+      return Promise.reject(error);
+    }
+    if (error.response) {
+      if (error.response.data.isExpired) {
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        window.location.href = "/login";
+      }
+    }
+    return Promise.reject(error);
+  }
+);
+
 export const createUser = async (userData) => {
   try {
     const response = await apiClient.post("/register", userData);
     return response.data;
   } catch (error) {
-    return error.response.data.message;
+    return error.response;
   }
 };
 
@@ -31,7 +48,7 @@ export const loginUser = async (loginInfo) => {
     return response.data;
   } catch (error) {
     console.log(error)
-    return error.response.data.message;
+    return error.response;
   }
 };
 
@@ -40,7 +57,7 @@ export const logout = async () => {
     const response = await apiClient.post("/logout");
     return response.data;
   } catch (error) {
-    return error.response.data.message;
+    return error.response;
   }
 };
 export const verifyOtp = async (otp) => {
@@ -48,7 +65,7 @@ export const verifyOtp = async (otp) => {
     const response = await apiClient.post("/verify-otp", otp);
     return response.data;
   } catch (error) {
-    return error.response.data.message;
+    return error.response;
   }
 };
 
@@ -57,6 +74,6 @@ export const getUser = async () => {
     const response = await apiClient("/getuser");
     return response.data;
   } catch (error) {
-    return error.response.data.message;
+    return error.response;
   }
 };

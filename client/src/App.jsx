@@ -17,11 +17,24 @@ import { setUser } from "./components/auth/slice/authSlice";
 import { getUser } from "./components/auth/api/authApi";
 import { setError } from "./components/global/globalSlice/GlobalSlice";
 import NotFound from "./layouts/NotFound";
+import Users from "./components/admin/Users";
+import AdminFaq from "./components/admin/AdminFaq";
+import ServiceForm from "./components/admin/ServiceForm";
+import AdminContacts from "./components/admin/AdminContacts";
+import InvoiceGenerator from "./components/admin/InvoiceGenerator InvoiceGenerator";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     const fetchLoggedInUser = () => async () => {
+      const accessToken = localStorage.getItem("accessToken");
+      const refreshToken = localStorage.getItem("refreshToken");
+
+      if (!accessToken || !refreshToken) {
+        console.log("Tokens not found. Skipping user fetch.");
+        return;
+      }
+
       try {
         const response = await getUser();
         dispatch(setUser(response.user));
@@ -34,7 +47,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <div className="flex flex-col min-h-screen max-w-screen-xl mx-auto">
+        <div className="flex flex-col min-h-screen">
           <NavBar />
           <main className="flex-grow">
             <Routes>
@@ -46,8 +59,17 @@ function App() {
               <Route path="/contact" element={<ContactFormPage />}></Route>
               <Route path="/faqs" element={<FaqPage />}></Route>
               <Route path="/contact-details" element={<ContactDetail />}></Route>
-              <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
               <Route path="/careers" element={<Career />}></Route>
+
+              {/* Nested Admin Routes */}
+              <Route path="/admin-dashboard" element={<AdminDashboard />}>
+                <Route index element={<ServiceForm />} />
+                <Route path="users" element={<Users />} />
+                <Route path="faqs" element={<AdminFaq />} />
+                <Route path="contacts" element={<AdminContacts />} />
+                <Route path="invoice" element={<InvoiceGenerator />} />
+              </Route>
+
               <Route path="*" element={<NotFound />}></Route>
             </Routes>
           </main>

@@ -12,180 +12,256 @@ const NavBar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 shadow-md rounded-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
-            <img
-              src="https://res.cloudinary.com/mohitsingh8954/image/upload/v1738087360/Figma_basics_1_dnzwnz.svg"
-              alt="Infrabyte Logo"
-              className="h-auto w-40"
-            />
-          </div>
+    <>
+      <nav className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 shadow-2xl backdrop-blur-lg border-b border-slate-700/50">
+        <div className="px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-20">
+            <div className="flex items-center">
+              <img
+                src="https://res.cloudinary.com/mohitsingh8954/image/upload/v1738087360/Figma_basics_1_dnzwnz.svg"
+                alt="MOHORA TECH"
+                className="h-auto w-40 drop-shadow-lg transition-transform duration-300 hover:scale-105"
+              />
+            </div>
 
-          {/* Desktop Navigation Links */}
-          <div className="hidden sm:flex items-center space-x-4">
-            <NavLink
-              to="/"
-              className="text-white hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Home
-            </NavLink>
-            {user?.role === "admin" && (
+            {/* Desktop Navigation Links */}
+            <div className="hidden sm:flex items-center space-x-1">
               <NavLink
-                to="/admin-dashboard"
-                className="text-white hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium"
+                to="/"
+                className="text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative group"
               >
-                Admin Dashboard
+                <span className="relative z-10">Home</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/20 group-hover:to-purple-600/20 rounded-lg transition-all duration-300"></div>
               </NavLink>
-            )}
-            <NavLink
-              to="/services"
-              className="text-white hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Services
-            </NavLink>
-            <NavLink
-              to="/contact"
-              className="text-white hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Contact
-            </NavLink>
-            <NavLink
-              to="/faqs"
-              className="text-white hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              FAQs
-            </NavLink>
-            <NavLink
-              to="/careers"
-              className="text-white hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-            >
-              Careers
-            </NavLink>
-          </div>
+              {user?.role === "admin" && (
+                <NavLink
+                  to="/admin-dashboard"
+                  className="text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600 hover:to-teal-600 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative group"
+                >
+                  <span className="relative z-10">Admin Dashboard</span>
+                  <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/0 to-teal-600/0 group-hover:from-emerald-600/20 group-hover:to-teal-600/20 rounded-lg transition-all duration-300"></div>
+                </NavLink>
+              )}
+              <NavLink
+                to="/services"
+                className="text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative group"
+              >
+                <span className="relative z-10">Services</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/20 group-hover:to-purple-600/20 rounded-lg transition-all duration-300"></div>
+              </NavLink>
+              <NavLink
+                to="/contact"
+                className="text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative group"
+              >
+                <span className="relative z-10">Contact</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/20 group-hover:to-purple-600/20 rounded-lg transition-all duration-300"></div>
+              </NavLink>
+              <NavLink
+                to="/faqs"
+                className="text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative group"
+              >
+                <span className="relative z-10">FAQs</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/20 group-hover:to-purple-600/20 rounded-lg transition-all duration-300"></div>
+              </NavLink>
+              <NavLink
+                to="/careers"
+                className="text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600 hover:to-purple-600 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg relative group"
+              >
+                <span className="relative z-10">Careers</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/0 to-purple-600/0 group-hover:from-blue-600/20 group-hover:to-purple-600/20 rounded-lg transition-all duration-300"></div>
+              </NavLink>
+            </div>
 
-          {/* Desktop Login/Logout Links */}
-          <div className="hidden sm:flex space-x-4">
-            {loggedInUser ? (
-              <>
-                <div className="hidden sm:flex items-center space-x-4">
-                  <NavLink to="/contact-details" className="text-white">
+            {/* Desktop Login/Logout Links */}
+            <div className="hidden sm:flex items-center space-x-3">
+              {loggedInUser ? (
+                <>
+                  <NavLink 
+                    to="/contact-details" 
+                    className="text-slate-300 hover:text-white p-2 rounded-lg hover:bg-slate-700/50 transition-all duration-300 relative group"
+                  >
                     <FaBell className="text-xl" />
+                    <span className="absolute -top-1 -right-1 w-3 h-3 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse"></span>
                   </NavLink>
-                </div>
-                <NavLink
-                  to="/logout"
-                  className="text-white hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Logout
-                </NavLink>
-              </>
-            ) : (
-              <>
-                <NavLink
-                  to="/login"
-                  className="text-white hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Login
-                </NavLink>
-                <NavLink
-                  to="/register"
-                  className="text-white hover:bg-blue-500 px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  Register
-                </NavLink>
-              </>
-            )}
-          </div>
+                  <NavLink
+                    to="/logout"
+                    className="text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                  >
+                    Logout
+                  </NavLink>
+                </>
+              ) : (
+                <>
+                  <NavLink
+                    to="/login"
+                    className="text-slate-200 hover:text-white border border-slate-600 hover:border-blue-500 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105"
+                  >
+                    Login
+                  </NavLink>
+                  <NavLink
+                    to="/register"
+                    className="text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                  >
+                    Register
+                  </NavLink>
+                </>
+              )}
+            </div>
 
-          {/* Mobile Menu Toggle Button */}
-          <button
-            className="text-2xl sm:hidden text-white focus:outline-none"
-            onClick={toggleMenu}
-          >
-            {isOpen ? <FaTimes /> : <FaBars />}
-          </button>
+            {/* Mobile Menu Toggle Button */}
+            <button
+              className="text-2xl sm:hidden text-slate-200 hover:text-white focus:outline-none p-2 rounded-lg hover:bg-slate-700/50 transition-all duration-300"
+              onClick={toggleMenu}
+            >
+              <div className="relative w-6 h-6 flex items-center justify-center">
+                <FaBars 
+                  className={`absolute transition-all duration-300 ${
+                    isOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
+                  }`} 
+                />
+                <FaTimes 
+                  className={`absolute transition-all duration-300 ${
+                    isOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
+                  }`} 
+                />
+              </div>
+            </button>
+          </div>
         </div>
-      </div>
+      </nav>
+
+      {/* Mobile Overlay */}
+      <div 
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-40 sm:hidden transition-opacity duration-300 ${
+          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        onClick={toggleMenu}
+      />
 
       {/* Mobile Side Navbar */}
-      {isOpen && (
-        <div className="sm:hidden bg-blue-500">
-          <div className="px-2 pt-2 pb-3 space-y-1">
+      <div className={`fixed top-0 left-0 h-full w-80 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-50 sm:hidden transform transition-transform duration-500 ease-in-out shadow-2xl ${
+        isOpen ? 'translate-x-0' : '-translate-x-full'
+      }`}>
+        <div className="flex flex-col h-full">
+          {/* Mobile Header */}
+          <div className="flex items-center justify-between p-6 border-b border-slate-700/50">
+            <img
+              src="https://res.cloudinary.com/mohitsingh8954/image/upload/v1738087360/Figma_basics_1_dnzwnz.svg"
+              alt="MOHORA TECH"
+              className="h-auto w-32"
+            />
+            <button
+              onClick={toggleMenu}
+              className="text-slate-300 hover:text-white p-2 rounded-lg hover:bg-slate-700/50 transition-all duration-300"
+            >
+              <FaTimes className="text-xl" />
+            </button>
+          </div>
+
+          {/* Mobile Navigation Links */}
+          <div className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
             <NavLink
               to="/"
-              className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+              className="flex items-center text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-purple-600/20 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 group"
               onClick={toggleMenu}
             >
-              Home
+              <span className="ml-3">Home</span>
+              <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+              </div>
             </NavLink>
+            
             {user?.role === "admin" && (
               <NavLink
                 to="/admin-dashboard"
-                className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+                className="flex items-center text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-emerald-600/20 hover:to-teal-600/20 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 group"
                 onClick={toggleMenu}
               >
-                Admin Dashboard
+                <span className="ml-3">Admin Dashboard</span>
+                <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="w-2 h-2 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full"></div>
+                </div>
               </NavLink>
             )}
+            
             <NavLink
               to="/services"
-              className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+              className="flex items-center text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-purple-600/20 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 group"
               onClick={toggleMenu}
             >
-              Services
+              <span className="ml-3">Services</span>
+              <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+              </div>
             </NavLink>
+            
             <NavLink
               to="/contact"
-              className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+              className="flex items-center text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-purple-600/20 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 group"
               onClick={toggleMenu}
             >
-              Contact
+              <span className="ml-3">Contact</span>
+              <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+              </div>
             </NavLink>
+            
             <NavLink
               to="/faqs"
-              className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+              className="flex items-center text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-purple-600/20 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 group"
               onClick={toggleMenu}
             >
-              FAQs
+              <span className="ml-3">FAQs</span>
+              <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+              </div>
             </NavLink>
+            
             <NavLink
               to="/careers"
-              className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+              className="flex items-center text-slate-200 hover:text-white hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-purple-600/20 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 group"
               onClick={toggleMenu}
             >
-              Careers
+              <span className="ml-3">Careers</span>
+              <div className="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="w-2 h-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
+              </div>
             </NavLink>
+          </div>
+
+          {/* Mobile Auth Section */}
+          <div className="p-4 border-t border-slate-700/50 space-y-3">
             {loggedInUser ? (
               <>
                 <NavLink
+                  to="/contact-details"
+                  className="flex items-center text-slate-200 hover:text-white hover:bg-slate-700/50 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300"
+                  onClick={toggleMenu}
+                >
+                  <FaBell className="text-lg mr-3" />
+                  <span>Notifications</span>
+                  <span className="ml-auto w-2 h-2 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse"></span>
+                </NavLink>
+                <NavLink
                   to="/logout"
-                  className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+                  className="flex items-center justify-center text-white bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 w-full"
                   onClick={toggleMenu}
                 >
                   Logout
-                </NavLink>
-                <NavLink
-                  to="/contact-details"
-                  className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
-                  onClick={toggleMenu}
-                >
-                  <FaBell className="inline text-lg mr-2" /> Notifications
                 </NavLink>
               </>
             ) : (
               <>
                 <NavLink
                   to="/login"
-                  className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+                  className="flex items-center justify-center text-slate-200 hover:text-white border border-slate-600 hover:border-blue-500 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 w-full"
                   onClick={toggleMenu}
                 >
                   Login
                 </NavLink>
                 <NavLink
                   to="/register"
-                  className="block text-white hover:bg-blue-400 px-3 py-2 rounded-md text-base font-medium"
+                  className="flex items-center justify-center text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-4 py-3 rounded-xl text-base font-medium transition-all duration-300 w-full"
                   onClick={toggleMenu}
                 >
                   Register
@@ -194,8 +270,8 @@ const NavBar = () => {
             )}
           </div>
         </div>
-      )}
-    </nav>
+      </div>
+    </>
   );
 };
 

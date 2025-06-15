@@ -6,13 +6,13 @@ export const authUser = (req, res, next) => {
     req.cookies.access_token || req.headers.authorization?.split(" ")[1];
 
   if (!token) {
-    return res.status(401).json({ message: "Access token is required" });
+    return res.status(401).json({ message: "Access token is required", isExpired: true });
   }
 
   try {
     jwt.verify(token, process.env.ACCESS_TOKEN, (err, user) => {
       if (err) {
-        return res.status(403).json({ message: "Invalid access token" });
+        return res.status(403).json({ message: "Invalid access token", isExpired: true });
       }
 
       req.userId = user.id;
@@ -22,7 +22,7 @@ export const authUser = (req, res, next) => {
   } catch (error) {
     return res
       .status(401)
-      .json({ message: "Unauthorized http request" + error.message });
+      .json({ message: "Unauthorized http request" + error.message, isExpired: true });
   }
 };
 

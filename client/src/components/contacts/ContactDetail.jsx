@@ -2,22 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteContactById, getContactByUserId } from "./Api/contactApi";
 import { setContacts } from "./slice/contactSlice";
-import {
-  setError,
-  setLoading,
-  setSuccess,
-} from "../global/globalSlice/GlobalSlice";
+import { setError, setLoading, setSuccess } from "../global/globalSlice/GlobalSlice";
 
 const ContactDetail = () => {
   const dispatch = useDispatch();
   const { contacts } = useSelector((state) => state.contacts);
   const [selectedContactId, setSelectedContactId] = useState(null);
+  const [visibleItems, setVisibleItems] = useState({});
 
   const getContacts = async () => {
     dispatch(setLoading(true));
     try {
       const response = await getContactByUserId();
-      // console.log(response);
       if (response.success) {
         dispatch(setContacts(response.contacts));
       }
@@ -30,6 +26,26 @@ const ContactDetail = () => {
 
   useEffect(() => {
     getContacts();
+
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleItems(prev => ({
+              ...prev,
+              [entry.target.id]: true
+            }));
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const items = document.querySelectorAll('[data-animate]');
+    items.forEach(item => observer.observe(item));
+
+    return () => observer.disconnect();
   }, []);
 
   const handleContactClick = (contactId) => {
@@ -40,80 +56,188 @@ const ContactDetail = () => {
     dispatch(setLoading(true));
     try {
       const response = await deleteContactById(id);
-      console.log(response);
       if (response.success) {
         dispatch(setSuccess(response.message));
-        const data=await getContactByUserId();
-        dispatch(setContacts(data.contacts))
+        const data = await getContactByUserId();
+        dispatch(setContacts(data.contacts));
       } else {
         dispatch(setError(response));
       }
     } catch (error) {
-      // console.log(error);
       dispatch(setError(error.message));
     } finally {
       dispatch(setLoading(false));
     }
   };
-console.log(contacts)
+
   return (
-    <div className="p-4 bg-gray-100 min-h-screen">
-      <h2 className="text-2xl font-bold mb-4">Contact Details</h2>
-      <ul className="space-y-4">
-        {contacts?.map((contact) => (
-          <li
-            key={contact._id}
-            className="border p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
-          >
-            <div className="flex justify-between items-center">
-              <p
-                className="text-lg font-semibold"
-                onClick={() => handleContactClick(contact._id)}
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
+      {/* Background Effects */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="absolute top-20 left-20 w-64 h-64 bg-gradient-to-r from-blue-600/20 to-purple-600/20 rounded-full blur-3xl animate-pulse-slow"></div>
+        <div className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-purple-600/15 to-pink-600/15 rounded-full blur-3xl animate-pulse-slow-delay"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-r from-cyan-600/10 to-blue-600/10 rounded-full blur-3xl animate-pulse-gentle"></div>
+      </div>
+
+      {/* Main Content */}
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div 
+          className="mb-12"
+          data-animate
+          id="contact-header"
+        >
+          <h2 className={`text-3xl sm:text-4xl font-bold text-white mb-2 transition-all duration-700 ease-in-out ${visibleItems['contact-header'] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
+            Contact <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Messages</span>
+          </h2>
+          <p className={`text-lg text-slate-300 transition-all duration-700 ease-in-out delay-100 ${visibleItems['contact-header'] ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-10'}`}>
+            View and manage your contact messages and replies
+          </p>
+        </div>
+
+        <ul className="space-y-6">
+          {contacts?.map((contact, index) => (
+            <li
+              key={contact._id}
+              data-animate
+              id={`contact-${index}`}
+              className={`transition-all duration-700 ease-in-out delay-${(index % 3) * 100} ${
+                visibleItems[`contact-${index}`] 
+                  ? 'opacity-100 translate-y-0' 
+                  : 'opacity-0 translate-y-10'
+              }`}
+            >
+              <div className={`bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden transition-all duration-300 ${
+                selectedContactId === contact._id 
+                  ? 'shadow-lg scale-[1.01]' 
+                  : 'shadow-md hover:scale-[1.005]'
+              }`}
               >
-                You :- {contact.message}
-              </p>
-              <div>
-                <button
-                  onClick={() => handleDeleteContact(contact._id)}
-                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition duration-200 mr-2"
+                <div className={`flex justify-between items-center p-6 transition-all duration-300 ${
+                  selectedContactId === contact._id 
+                    ? 'bg-white/10' 
+                    : 'hover:bg-white/10'
+                }`}
                 >
-                  Delete
-                </button>
-                <button
-                  onClick={() => handleContactClick(contact._id)}
-                  className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition duration-200"
-                >
-                  {selectedContactId === contact._id
-                    ? "Hide Replies"
-                    : "Show Replies"}
-                </button>
-              </div>
-            </div>
-            {selectedContactId === contact._id &&
-              contact?.replies &&
-              contact?.replies?.length > 0 && (
-                <ul className="mt-2 pl-4">
-                  {contact.replies.map((reply) => (
-                    <li
-                      key={reply._id}
-                      className="text-gray-700 bg-gray-100 rounded p-2 mb-1 flex justify-between"
+                  <div className="flex-1">
+                    <p className="text-lg font-semibold text-white">
+                      <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">You: </span>
+                      {contact.message}
+                    </p>
+                    <p className="text-sm text-slate-400 mt-1">
+                      {new Date(contact.createdAt).toLocaleString("en-GB")}
+                    </p>
+                  </div>
+                  <div className="flex space-x-3">
+                    <button
+                      onClick={() => handleDeleteContact(contact._id)}
+                      className="group relative px-4 py-2 bg-gradient-to-r from-red-600 to-pink-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
                     >
-                      <p>{reply.reply}</p>
-                      <div className="flex flex-col items-end">
-                        <p className="text-sm text-gray-500">
-                          {new Date(reply.date).toLocaleString("en-GB")}
-                        </p>
-                        <p className="text-sm text-gray-500">
-                          Admin :- {reply?.admin?.name}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              )}
-          </li>
-        ))}
-      </ul>
+                      <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                      <span className="relative z-10">Delete</span>
+                    </button>
+                    <button
+                      onClick={() => handleContactClick(contact._id)}
+                      className="group relative px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                      <span className="relative z-10">
+                        {selectedContactId === contact._id ? "Hide Replies" : "Show Replies"}
+                      </span>
+                    </button>
+                  </div>
+                </div>
+
+                {selectedContactId === contact._id &&
+                  contact?.replies &&
+                  contact?.replies?.length > 0 && (
+                    <div className="border-t border-white/10">
+                      <ul className="p-4 space-y-3">
+                        {contact.replies.map((reply, replyIndex) => (
+                          <li
+                            key={reply._id}
+                            className="bg-white/5 backdrop-blur-sm rounded-lg p-4 border border-white/10"
+                          >
+                            <div className="flex justify-between">
+                              <p className="text-slate-200">{reply.reply}</p>
+                              <div className="text-right">
+                                <p className="text-sm text-slate-400">
+                                  {new Date(reply.date).toLocaleString("en-GB")}
+                                </p>
+                                <p className="text-sm bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                                  Admin: {reply?.admin?.name}
+                                </p>
+                              </div>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Custom Styles */}
+      <style jsx global>{`
+        @keyframes fade-in {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fade-in-up {
+          from { opacity: 0; transform: translateY(30px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float-gentle {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse-slow {
+          0%, 100% { opacity: 0.3; transform: scale(1); }
+          50% { opacity: 0.6; transform: scale(1.05); }
+        }
+
+        @keyframes pulse-gentle {
+          0%, 100% { opacity: 0.2; transform: scale(1); }
+          50% { opacity: 0.4; transform: scale(1.02); }
+        }
+
+        .animate-fade-in {
+          animation: fade-in 0.8s ease-out;
+        }
+
+        .animate-fade-in-up {
+          animation: fade-in-up 0.8s ease-out;
+        }
+
+        .animate-fade-in-up-delay {
+          animation: fade-in-up 0.8s ease-out 0.3s both;
+        }
+
+        .animate-fade-in-up-delay-2 {
+          animation: fade-in-up 0.8s ease-out 0.6s both;
+        }
+
+        .animate-float-gentle {
+          animation: float-gentle 4s ease-in-out infinite;
+        }
+
+        .animate-pulse-slow {
+          animation: pulse-slow 4s ease-in-out infinite;
+        }
+
+        .animate-pulse-slow-delay {
+          animation: pulse-slow 4s ease-in-out infinite 2s;
+        }
+
+        .animate-pulse-gentle {
+          animation: pulse-gentle 3s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 };

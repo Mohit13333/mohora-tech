@@ -211,8 +211,8 @@ const Login = () => {
           <div className="bg-gradient-to-r from-blue-600 to-purple-600 p-8 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent"></div>
             <div className="relative z-10">
-              <div className="h-16 w-16 mx-auto mb-4 bg-white/20 rounded-2xl flex items-center justify-center drop-shadow-lg">
-                <div className="text-xl font-bold text-white">Logo</div>
+              <div className="h-16 w-full mx-auto mb-6 rounded-2xl flex items-center justify-center drop-shadow-2xl">
+                <div className="text-3xl font-bold text-white"><img src="https://res.cloudinary.com/mohitsingh8954/image/upload/v1738087360/Figma_basics_1_dnzwnz.svg" alt="" srcset="" /></div>
               </div>
               <h1 className="text-2xl font-bold text-white mb-2">Welcome Back!</h1>
               <p className="text-white/90">Sign in to your account</p>

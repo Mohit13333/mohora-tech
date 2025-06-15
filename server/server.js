@@ -16,7 +16,7 @@ const app = express();
 app.use(express.json());
 const allowedOrigins = [
   "https://mohora-tech.onrender.com",
-  "https://mohoratechnologies.netlify.app/"
+  "https://mohoratechnologies.netlify.app"
 ];
 
 const corsOptions = {
@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
 
 cron.schedule("*/3 * * * *", async () => {
   try {
-    const response = await axios.get("https://mohoratechnologies.netlify.app/");
+    const response = await axios.get("https://mohoratechnologies.netlify.app");
     console.log(`[CRON] Server pinged: ${response.status} - ${new Date().toLocaleString()}`);
   } catch (error) {
     console.error(`[CRON] Ping failed: ${error.message}`);

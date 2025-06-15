@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [isVisible, setIsVisible] = useState({});
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   // Mock navigation function
-  const navigate = (path) => {
-    console.log(`Navigating to: ${path}`);
-  };
+  const navigate = useNavigate();
 
   // Intersection Observer for animations
   useEffect(() => {

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setServices } from "./slice/serviceSlice";
 import { getAllServices } from "./Api/serviceApi";
+import { NavLink } from "react-router-dom";
 
 const ServicePage = () => {
   const dispatch = useDispatch();
@@ -96,12 +97,13 @@ const ServicePage = () => {
                           {/* <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                             ₹{service?.price}
                           </div> */}
-                          
+                          <NavLink to="/contact">
                           <button className="group/btn relative px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden">
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
                             <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
                             <span className="relative z-10 text-sm">Learn More</span>
                           </button>
+                          </NavLink>
                         </div>
                       </div>
                       

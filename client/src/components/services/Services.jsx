@@ -6,6 +6,7 @@ import { getAllServices } from "./Api/serviceApi";
 const ServicePage = () => {
   const dispatch = useDispatch();
   const { services } = useSelector((state) => state.services);
+      const { loggedInUser, user } = useSelector((state) => state.auth);
     
   const fetchServices = async () => {
     try {
@@ -19,7 +20,7 @@ const ServicePage = () => {
 
   useEffect(() => {
     fetchServices();
-  }, []);
+  }, [dispatch, loggedInUser, user]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
@@ -92,9 +93,9 @@ const ServicePage = () => {
                         
                         {/* Price and CTA */}
                         <div className="flex items-center justify-between">
-                          <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                          {/* <div className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                             ₹{service?.price}
-                          </div>
+                          </div> */}
                           
                           <button className="group/btn relative px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden">
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>

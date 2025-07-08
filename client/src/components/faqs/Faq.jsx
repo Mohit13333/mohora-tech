@@ -13,7 +13,9 @@ const Faq = () => {
   const getAllFaq = async () => {
     try {
       const response = await getAllFaqs();
-      dispatch(setfaqs(response.Faqs));
+      if (response.success) {
+        dispatch(setfaqs(response.Faqs));
+      }
     } catch (error) {
       dispatch(setError(error.message));
     }
@@ -61,7 +63,7 @@ const Faq = () => {
         {/* Two-column layout for larger screens */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left column - Banner/Logo (Animated) */}
-          <div 
+          <div
             className="lg:col-span-5 xl:col-span-4 hidden lg:block relative"
             data-animate
             id="left-banner"
@@ -75,14 +77,18 @@ const Faq = () => {
                   <p className="text-slate-300 mb-6 leading-relaxed">
                     Can't find what you're looking for? Our team is ready to assist you with any questions.
                   </p>
-                  <button className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                    <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
-                    <span className="relative z-10 flex items-center justify-center space-x-2">
-                      <span>📧</span>
-                      <span>Contact Support</span>
-                    </span>
-                  </button>
+                  <a
+                    href="mailto:mohoratechnologiespvtltd@gmail.com"
+                  >
+                    <button className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                      <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
+                      <span className="relative z-10 flex items-center justify-center space-x-2">
+                        <span>📧</span>
+                        <span>Contact Support</span>
+                      </span>
+                    </button>
+                  </a>
                 </div>
                 <div className="w-full h-64 bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-2xl flex items-center justify-center border border-white/10">
                   <div className="text-8xl animate-float-gentle">❓</div>
@@ -94,7 +100,7 @@ const Faq = () => {
           {/* Right column - FAQ Content */}
           <div className="lg:col-span-7 xl:col-span-8">
             {/* Header (Animated) */}
-            <div 
+            <div
               className="mb-12"
               data-animate
               id="faq-header"
@@ -114,24 +120,21 @@ const Faq = () => {
                   key={faq._id}
                   data-animate
                   id={`faq-item-${index}`}
-                  className={`transition-all duration-700 ease-in-out delay-${(index % 3) * 100} ${
-                    visibleSections[`faq-item-${index}`] 
-                      ? 'opacity-100 translate-y-0' 
-                      : 'opacity-0 translate-y-10'
-                  }`}
+                  className={`transition-all duration-700 ease-in-out delay-${(index % 3) * 100} ${visibleSections[`faq-item-${index}`]
+                    ? 'opacity-100 translate-y-0'
+                    : 'opacity-0 translate-y-10'
+                    }`}
                 >
-                  <div className={`bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden transition-all duration-300 ${
-                    activeIndex === index 
-                      ? 'shadow-lg scale-[1.01]' 
-                      : 'shadow-md hover:scale-[1.005]'
-                  }`}
+                  <div className={`bg-gradient-to-br from-white/5 to-white/10 backdrop-blur-sm rounded-xl border border-white/20 overflow-hidden transition-all duration-300 ${activeIndex === index
+                    ? 'shadow-lg scale-[1.01]'
+                    : 'shadow-md hover:scale-[1.005]'
+                    }`}
                   >
                     <button
-                      className={`w-full flex justify-between items-center p-6 text-left transition-all duration-300 ${
-                        activeIndex === index 
-                          ? 'bg-white/10' 
-                          : 'hover:bg-white/10'
-                      }`}
+                      className={`w-full flex justify-between items-center p-6 text-left transition-all duration-300 ${activeIndex === index
+                        ? 'bg-white/10'
+                        : 'hover:bg-white/10'
+                        }`}
                       onClick={() => toggleAccordion(index)}
                     >
                       <span className="font-medium text-white text-lg">{faq.title}</span>
@@ -144,11 +147,10 @@ const Faq = () => {
                       </span>
                     </button>
                     <div
-                      className={`transition-all duration-500 ease-in-out overflow-hidden ${
-                        activeIndex === index 
-                          ? 'max-h-96 opacity-100' 
-                          : 'max-h-0 opacity-0'
-                      }`}
+                      className={`transition-all duration-500 ease-in-out overflow-hidden ${activeIndex === index
+                        ? 'max-h-96 opacity-100'
+                        : 'max-h-0 opacity-0'
+                        }`}
                     >
                       <div className="p-6 bg-white/5 text-slate-300 border-t border-white/10">
                         {faq.description}

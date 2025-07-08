@@ -228,7 +228,7 @@ const ContactForm = () => {
             </div>
           </div>
 
-          {/* Map Section */}
+          {/* Map Section
           <section className="max-w-6xl mx-auto px-4">
             <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-8 animate-fade-in-up-delay">
               <div className="text-center mb-6">
@@ -249,7 +249,7 @@ const ContactForm = () => {
                 ></iframe>
               </div>
             </div>
-          </section>
+          </section> */}
         </div>
 
         {/* Custom Styles */}

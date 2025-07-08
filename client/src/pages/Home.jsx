@@ -39,14 +39,14 @@ const Home = () => {
   }, []);
 
   const testimonials = [
-    {
-      name: "Sarah Johnson",
-      company: "TechCorp Inc.",
-      role: "CTO",
-      content: "Mohora Technologies transformed our entire digital infrastructure. Their expertise and dedication exceeded all expectations.",
-      rating: 5,
-      image: "https://images.unsplash.com/photo-1494790108755-2616b332c433?w=150&h=150&fit=crop&crop=face&auto=format"
-    },
+    // {
+    //   name: "Sarah Johnson",
+    //   company: "TechCorp Inc.",
+    //   role: "CTO",
+    //   content: "Mohora Technologies transformed our entire digital infrastructure. Their expertise and dedication exceeded all expectations.",
+    //   rating: 5,
+    //   image: "https://images.unsplash.com/photo-1494790108755-2616b332c433?w=150&h=150&fit=crop&crop=face&auto=format"
+    // },
     {
       name: "Michael Chen",
       company: "StartupXYZ",
@@ -126,13 +126,15 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
               <span className="relative z-10 flex items-center space-x-2">
-                <span>📞</span>
-                <span>Book Demo Call</span>
+                <Link to="/contact">
+                  <span>📞</span>
+                  <span>Book Demo Call</span>
+                </Link>
               </span>
             </button>
             <Link to="/services">
               <button
-              onClick={() => navigate('/services')}
+                onClick={() => navigate('/services')}
                 className="group relative px-8 py-4 bg-slate-800/50 border border-slate-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-slate-700/50 hover:border-slate-500 backdrop-blur-sm"
               >
                 <span className="flex items-center space-x-2">
@@ -322,8 +324,8 @@ const Home = () => {
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${index === currentTestimonial
-                      ? 'bg-gradient-to-r from-blue-400 to-purple-400 scale-125 shadow-lg'
-                      : 'bg-slate-600 hover:bg-slate-500 hover:scale-110'
+                    ? 'bg-gradient-to-r from-blue-400 to-purple-400 scale-125 shadow-lg'
+                    : 'bg-slate-600 hover:bg-slate-500 hover:scale-110'
                     }`}
                 />
               ))}
@@ -345,20 +347,25 @@ const Home = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                <span className="relative z-10 flex items-center space-x-2">
-                  <span>📅</span>
-                  <span>Schedule Free Consultation</span>
-                </span>
-              </button>
+              <Link to="/contact">
+                <button className="group relative px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                  <span className="relative z-10 flex items-center space-x-2">
+                    <span>📅</span>
+                    <span>Schedule Free Consultation</span>
+                  </span>
+                </button>
+              </Link>
+              <a href="mailto:mohoratechnologiespvtltd@gmail.com">
 
-              <button className="group relative px-8 py-4 bg-slate-800/50 border border-slate-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-slate-700/50 hover:border-slate-500 backdrop-blur-sm">
-                <span className="flex items-center space-x-2">
-                  <span>📧</span>
-                  <span>Contact Us</span>
-                </span>
-              </button>
+                <button className="group relative px-8 py-4 bg-slate-800/50 border border-slate-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-slate-700/50 hover:border-slate-500 backdrop-blur-sm">
+                  <span className="flex items-center space-x-2">
+                    <span>📧</span>
+                    <span>Contact Us</span>
+                  </span>
+                </button>
+              </a>
+
             </div>
           </div>
         </div>

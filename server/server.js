@@ -8,6 +8,8 @@ import ServiceRouter from "./routes/service.router.js";
 import faqRouter from "./routes/faq.router.js";
 import contactRouter from "./routes/contact.router.js";
 import contactReplyRouter from "./routes/contactReply.router.js"
+import applicationRouter from "./routes/application.route.js"
+import jobRouter from "./routes/job.route.js"
 import connectDB from "./config/connectDB.js";
 import cron from "node-cron";
 import axios from "axios";
@@ -15,6 +17,7 @@ import axios from "axios";
 const app = express();
 app.use(express.json());
 const allowedOrigins = [
+  "http://localhost:5173",
   "https://mohora-tech.onrender.com",
   "https://mohoratechnologies.netlify.app"
 ];
@@ -48,6 +51,8 @@ app.use("/api/admin", adminRouter,contactReplyRouter);
 app.use("/api/services", ServiceRouter);
 app.use("/api/faqs", faqRouter);
 app.use("/api/contacts", contactRouter);
+app.use("/api/jobapply", applicationRouter);
+app.use("/api/jobs", jobRouter);
 connectDB()
   .then(() => {
     app.listen(process.env.PORT, () => {

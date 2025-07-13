@@ -12,9 +12,7 @@ const ServicePage = () => {
   const fetchServices = async () => {
     try {
       const data = await getAllServices();
-      if (response.success) {
         dispatch(setServices(data.services));
-      }
     } catch (error) {
       console.error("Failed to fetch services:", error.message);
     }
@@ -37,7 +35,7 @@ const ServicePage = () => {
       <div className="relative z-10">
         {/* Header Section */}
         <div className="pt-20 pb-12 px-6">
-          <div className="max-w-6xl mx-auto text-center">
+          <div className="mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in">
               Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Services</span>
             </h1>
@@ -49,7 +47,7 @@ const ServicePage = () => {
 
         {/* Services Grid */}
         <div className="px-6 pb-20">
-          <div className="max-w-6xl mx-auto">
+          <div className="mx-auto">
             {services?.length === 0 ? (
               <div className="text-center py-20">
                 <div className="text-8xl mb-6 animate-float-gentle">🔧</div>
@@ -58,7 +56,7 @@ const ServicePage = () => {
                 </p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 justify-center">
                 {services?.map((service, index) => (
                   <div
                     key={service?._id}

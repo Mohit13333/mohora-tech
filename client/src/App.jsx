@@ -22,6 +22,7 @@ import AdminFaq from "./components/admin/AdminFaq";
 import ServiceForm from "./components/admin/ServiceForm";
 import AdminContacts from "./components/admin/AdminContacts";
 import InvoiceGenerator from "./components/admin/InvoiceGenerator InvoiceGenerator";
+import About from "./components/About-us/AboutUs";
 
 function App() {
   const dispatch = useDispatch();
@@ -51,15 +52,13 @@ function App() {
           <NavBar />
           <main className="flex-grow">
             <Routes>
-              <Route path="/login" element={<Login />}></Route>
-              <Route path="/register" element={<SignupPage />}></Route>
-              <Route path="/logout" element={<Logout />}></Route>
               <Route path="/" element={<Home />}></Route>
               <Route path="/services" element={<Service />}></Route>
               <Route path="/contact" element={<ContactFormPage />}></Route>
               <Route path="/faqs" element={<FaqPage />}></Route>
               <Route path="/contact-details" element={<ContactDetail />}></Route>
               <Route path="/careers" element={<Career />}></Route>
+              <Route path="/about" element={<About />}></Route>
 
               {/* Nested Admin Routes */}
               <Route path="/admin-dashboard" element={<AdminDashboard />}>

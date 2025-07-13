@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createContact } from "./Api/contactApi";
 import {
   setError,
@@ -9,7 +9,6 @@ import {
 
 const ContactForm = () => {
   const dispatch = useDispatch();
-  const { loggedInUser } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
     phoneNumber: "",
     email: "",
@@ -66,167 +65,164 @@ const ContactForm = () => {
           {/* Contact Form Container */}
           <div className="max-w-2xl mx-auto px-4 mb-12">
             <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 shadow-2xl p-8 lg:p-12 animate-fade-in-up">
-              {loggedInUser ? (
-                <form onSubmit={handleFormSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Phone Number */}
-                    <div>
-                      <label
-                        htmlFor="phoneNumber"
-                        className=" text-sm font-medium mb-3 text-white flex items-center space-x-2"
-                      >
-                        <span className="text-blue-400">📞</span>
-                        <span>Phone Number</span>
-                      </label>
-                      <input
-                        type="text"
-                        id="phoneNumber"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
-                        required
-                        placeholder="Enter Your Phone Number"
-                        onChange={handleInputChange}
-                        className="w-full bg-slate-800/50 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 backdrop-blur-sm"
-                      />
-                    </div>
-
-                    {/* Email */}
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className=" text-sm font-medium mb-3 text-white flex items-center space-x-2"
-                      >
-                        <span className="text-purple-400">📧</span>
-                        <span>Email</span>
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        id="email"
-                        placeholder="Enter Your Email"
-                        required
-                        onChange={handleInputChange}
-                        className="w-full bg-slate-800/50 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 backdrop-blur-sm"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Message */}
+              <form onSubmit={handleFormSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  {/* Phone Number */}
                   <div>
                     <label
-                      htmlFor="message"
-                      className="text-sm font-medium mb-3 text-white flex items-center space-x-2"
+                      htmlFor="phoneNumber"
+                      className=" text-sm font-medium mb-3 text-white flex items-center space-x-2"
                     >
-                      <span className="text-cyan-400">💬</span>
-                      <span>Message</span>
+                      <span className="text-blue-400">📞</span>
+                      <span>Phone Number</span>
                     </label>
-                    <textarea
-                      name="message"
-                      id="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      className="w-full bg-slate-800/50 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-300 backdrop-blur-sm resize-none"
-                      rows="5"
+                    <input
+                      type="text"
+                      id="phoneNumber"
+                      name="phoneNumber"
+                      value={formData.phoneNumber}
                       required
-                      placeholder="Tell us about your project or inquiry..."
-                    ></textarea>
+                      placeholder="Enter Your Phone Number"
+                      onChange={handleInputChange}
+                      className="w-full bg-slate-800/50 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 backdrop-blur-sm"
+                    />
                   </div>
 
-                  {/* Submit Button */}
-                  <button
-                    type="submit"
-                    className="group relative w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden"
-                  >
-                    <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                    <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
-                    <span className="relative z-10 flex items-center justify-center space-x-2">
-                      <span>🚀</span>
-                      <span>Send Message</span>
-                    </span>
-                  </button>
-                </form>
-              ) : (
-                <div className="space-y-6">
-                  <div className="text-center mb-8">
-                    <div className="text-6xl mb-4 animate-float-gentle">📞</div>
-                    <h3 className="text-2xl text-white font-semibold mb-2">Get In Touch</h3>
-                    <p className="text-slate-300">Connect with our team through any of these channels</p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Contact Information Cards */}
-                    <div className="bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-2xl border border-blue-500/30 p-6">
-                      <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
-                          <span className="text-white">📧</span>
-                        </div>
-                        <h4 className="text-white font-semibold">Email Contact</h4>
-                      </div>
-                      <a
-                        href="mailto:mohoratechnologiespvtltd@gmail.com"
-                        className="text-blue-300 hover:text-blue-200 transition-colors duration-300 text-sm break-all"
-                      >
-                        mohoratechnologiespvtltd@gmail.com
-                      </a>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-green-600/20 to-green-800/20 backdrop-blur-sm rounded-2xl border border-green-500/30 p-6">
-                      <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
-                          <span className="text-white">📞</span>
-                        </div>
-                        <h4 className="text-white font-semibold">Phone</h4>
-                      </div>
-                      <a
-                        href="tel:+919065269192"
-                        className="text-green-300 hover:text-green-200 transition-colors duration-300 font-medium"
-                      >
-                        +91 9065269192
-                      </a>
-                      <p className="text-slate-400 text-sm mt-2">Mon to Fri (09:00 am – 09:00 pm)</p>
-                    </div>
-                  </div>
-
-                  {/* Department Cards */}
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
-                    <div className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm rounded-xl border border-purple-500/30 p-4 text-center">
-                      <div className="text-2xl mb-2">🛠️</div>
-                      <h5 className="text-white font-medium mb-2">Support Team</h5>
-                      <a
-                        href="mailto:mohoratechnologiespvtltd@gmail.com"
-                        className="text-purple-300 hover:text-purple-200 transition-colors duration-300 text-xs"
-                      >
-                        Technical Support
-                      </a>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-cyan-600/20 to-cyan-800/20 backdrop-blur-sm rounded-xl border border-cyan-500/30 p-4 text-center">
-                      <div className="text-2xl mb-2">💼</div>
-                      <h5 className="text-white font-medium mb-2">Sales Team</h5>
-                      <a
-                        href="mailto:mohoratechnologiespvtltd@gmail.com"
-                        className="text-cyan-300 hover:text-cyan-200 transition-colors duration-300 text-xs"
-                      >
-                        Sales Inquiries
-                      </a>
-                    </div>
-
-                    <div className="bg-gradient-to-br from-pink-600/20 to-pink-800/20 backdrop-blur-sm rounded-xl border border-pink-500/30 p-4 text-center">
-                      <div className="text-2xl mb-2">🚀</div>
-                      <h5 className="text-white font-medium mb-2">Business</h5>
-                      <a
-                        href="mailto:mohoratechnologiespvtltd@gmail.com"
-                        className="text-pink-300 hover:text-pink-200 transition-colors duration-300 text-xs"
-                      >
-                        Partnerships
-                      </a>
-                    </div>
+                  {/* Email */}
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className=" text-sm font-medium mb-3 text-white flex items-center space-x-2"
+                    >
+                      <span className="text-purple-400">📧</span>
+                      <span>Email</span>
+                    </label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      id="email"
+                      placeholder="Enter Your Email"
+                      required
+                      onChange={handleInputChange}
+                      className="w-full bg-slate-800/50 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-all duration-300 backdrop-blur-sm"
+                    />
                   </div>
                 </div>
-              )}
+
+                {/* Message */}
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="text-sm font-medium mb-3 text-white flex items-center space-x-2"
+                  >
+                    <span className="text-cyan-400">💬</span>
+                    <span>Message</span>
+                  </label>
+                  <textarea
+                    name="message"
+                    id="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="w-full bg-slate-800/50 border border-slate-600 rounded-xl p-4 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:border-cyan-500 transition-all duration-300 backdrop-blur-sm resize-none"
+                    rows="5"
+                    required
+                    placeholder="Tell us about your project or inquiry..."
+                  ></textarea>
+                </div>
+
+                {/* Submit Button */}
+                <button
+                  type="submit"
+                  className="group relative w-full px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
+                  <span className="relative z-10 flex items-center justify-center space-x-2">
+                    <span>🚀</span>
+                    <span>Send Message</span>
+                  </span>
+                </button>
+              </form>
             </div>
           </div>
+          {/* <section className="max-w-2xl mx-auto px-4">
+            <div className="space-y-6">
+              <div className="text-center mb-8">
+                <div className="text-6xl mb-4 animate-float-gentle">📞</div>
+                <h3 className="text-2xl text-white font-semibold mb-2">Get In Touch</h3>
+                <p className="text-slate-300">Connect with our team through any of these channels</p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-gradient-to-br from-blue-600/20 to-blue-800/20 backdrop-blur-sm rounded-2xl border border-blue-500/30 p-6">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center">
+                      <span className="text-white">📧</span>
+                    </div>
+                    <h4 className="text-white font-semibold">Email Contact</h4>
+                  </div>
+                  <a
+                    href="mailto:mohoratechnologiespvtltd@gmail.com"
+                    className="text-blue-300 hover:text-blue-200 transition-colors duration-300 text-sm break-all"
+                  >
+                    mohoratechnologiespvtltd@gmail.com
+                  </a>
+                </div>
+
+                <div className="bg-gradient-to-br from-green-600/20 to-green-800/20 backdrop-blur-sm rounded-2xl border border-green-500/30 p-6">
+                  <div className="flex items-center space-x-3 mb-4">
+                    <div className="w-10 h-10 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center">
+                      <span className="text-white">📞</span>
+                    </div>
+                    <h4 className="text-white font-semibold">Phone</h4>
+                  </div>
+                  <a
+                    href="tel:+919065269192"
+                    className="text-green-300 hover:text-green-200 transition-colors duration-300 font-medium"
+                  >
+                    +91 9065269192
+                  </a>
+                  <p className="text-slate-400 text-sm mt-2">Mon to Fri (09:00 am – 09:00 pm)</p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8">
+                <div className="bg-gradient-to-br from-purple-600/20 to-purple-800/20 backdrop-blur-sm rounded-xl border border-purple-500/30 p-4 text-center">
+                  <div className="text-2xl mb-2">🛠️</div>
+                  <h5 className="text-white font-medium mb-2">Support Team</h5>
+                  <a
+                    href="mailto:mohoratechnologiespvtltd@gmail.com"
+                    className="text-purple-300 hover:text-purple-200 transition-colors duration-300 text-xs"
+                  >
+                    Technical Support
+                  </a>
+                </div>
+
+                <div className="bg-gradient-to-br from-cyan-600/20 to-cyan-800/20 backdrop-blur-sm rounded-xl border border-cyan-500/30 p-4 text-center">
+                  <div className="text-2xl mb-2">💼</div>
+                  <h5 className="text-white font-medium mb-2">Sales Team</h5>
+                  <a
+                    href="mailto:mohoratechnologiespvtltd@gmail.com"
+                    className="text-cyan-300 hover:text-cyan-200 transition-colors duration-300 text-xs"
+                  >
+                    Sales Inquiries
+                  </a>
+                </div>
+
+                <div className="bg-gradient-to-br from-pink-600/20 to-pink-800/20 backdrop-blur-sm rounded-xl border border-pink-500/30 p-4 text-center">
+                  <div className="text-2xl mb-2">🚀</div>
+                  <h5 className="text-white font-medium mb-2">Business</h5>
+                  <a
+                    href="mailto:mohoratechnologiespvtltd@gmail.com"
+                    className="text-pink-300 hover:text-pink-200 transition-colors duration-300 text-xs"
+                  >
+                    Partnerships
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section> */}
 
           {/* Map Section
           <section className="max-w-6xl mx-auto px-4">

@@ -1,46 +1,39 @@
 import multer from 'multer';
-import { CloudinaryStorage } from 'multer-storage-cloudinary';
 import cloudinary from '../utils/cloudinary.js';
+import { promisify } from 'util';
+import stream from 'stream';
 
-const resumeStorage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: (req, file) => {
-    return {
-      folder: 'job-applications/resumes',
-      resource_type: 'raw', // Use 'raw' for documents instead of 'image'
-      allowed_formats: ['pdf', 'doc', 'docx', 'txt', 'rtf'],
-      format: async () => {
-        // Preserve original file extension
-        const ext = file.originalname.split('.').pop().toLowerCase();
-        return ext;
-      },
-      public_id: `${file.fieldname}-${Date.now()}`,
-      // Optional: Add tags for better organization
-      tags: ['resume', 'job-application']
-    };
-  }
-});
+// Create memory storage
+const memoryStorage = multer.memoryStorage();
 
-const additionalDocsStorage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: (req, file) => {
-    return {
-      folder: 'job-applications/additional-docs',
-      resource_type: 'raw',
-      allowed_formats: ['pdf', 'doc', 'docx', 'txt', 'rtf', 'jpg', 'jpeg', 'png'],
-      format: async () => {
-        const ext = file.originalname.split('.').pop().toLowerCase();
-        return ext;
+// Function to upload stream to Cloudinary
+const uploadToCloudinary = (file, folder, resourceType = 'raw') => {
+  return new Promise((resolve, reject) => {
+    const uploadStream = cloudinary.uploader.upload_stream(
+      {
+        folder: folder,
+        resource_type: resourceType,
+        public_id: `${file.fieldname}-${Date.now()}`,
+        tags: ['job-application']
       },
-      public_id: `${file.fieldname}-${Date.now()}`,
-      tags: ['additional-document', 'job-application']
-    };
-  }
-});
+      (error, result) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(result);
+        }
+      }
+    );
+
+    const bufferStream = new stream.PassThrough();
+    bufferStream.end(file.buffer);
+    bufferStream.pipe(uploadStream);
+  });
+};
 
 // Middleware for uploading resumes
 export const uploadResume = multer({ 
-  storage: resumeStorage,
+  storage: memoryStorage,
   limits: {
     fileSize: 5 * 1024 * 1024, // 5MB limit
     files: 1 // Only one file
@@ -53,20 +46,20 @@ export const uploadResume = multer({
       cb(new Error('Only PDF and Word documents are allowed'), false);
     }
   }
-});
+}).single('resume');
 
 // Middleware for uploading additional documents
 export const uploadAdditionalDocs = multer({
-  storage: additionalDocsStorage,
+  storage: memoryStorage,
   limits: {
     fileSize: 10 * 1024 * 1024, // 10MB limit
     files: 3 // Maximum 3 files
   }
-});
+}).array('additionalDocs', 3);
 
 // Combined middleware for multiple upload types
 export const uploadApplicationFiles = multer({
-  storage: resumeStorage, // Default storage for all files
+  storage: memoryStorage,
   limits: {
     fileSize: 5 * 1024 * 1024, // 5MB limit per file
     files: 4 // Resume + 3 additional files max
@@ -93,3 +86,35 @@ export const uploadApplicationFiles = multer({
   { name: 'coverLetter', maxCount: 1 },
   { name: 'certificates', maxCount: 2 }
 ]);
+
+// Helper function to process uploaded files
+export const processUploadedFiles = async (req) => {
+  const uploadResults = {};
+  
+  if (req.file) {
+    // Single file upload (like resume)
+    const result = await uploadToCloudinary(
+      req.file,
+      'job-applications/resumes'
+    );
+    uploadResults[req.file.fieldname] = result;
+  } else if (req.files) {
+    // Multiple files upload
+    for (const field in req.files) {
+      if (!uploadResults[field]) {
+        uploadResults[field] = [];
+      }
+      
+      const folder = field === 'resume' || field === 'coverLetter' 
+        ? 'job-applications/resumes' 
+        : 'job-applications/additional-docs';
+      
+      for (const file of req.files[field]) {
+        const result = await uploadToCloudinary(file, folder);
+        uploadResults[field].push(result);
+      }
+    }
+  }
+  
+  return uploadResults;
+};

@@ -1,37 +1,49 @@
 import Application from "../models/application.model.js";
 import Job from "../models/job.model.js";
-
+import { processUploadedFiles } from '../middlewares/jobaplicaton.middleware.js';
 
 export const submitApplication = async (req, res) => {
+  try {
     const { jobId, firstName, lastName, email, phone, coverLetter } = req.body;
-    const { path: resume } = req.file;
 
-    const job = await Job.findOne({ _id: jobId, isActive: true });
-
-    if (!job) {
-        res.status(400);
-        throw new Error('Invalid job ID or job is no longer available');
-    }
-
+    // Ensure resume is uploaded
     if (!req.file) {
-        res.status(400);
-        throw new Error('Please upload a resume');
+      return res.status(400).json({ success: false, message: 'Please upload a resume' });
     }
 
+    // Upload resume to Cloudinary
+    const uploadResults = await processUploadedFiles(req);
+    const resume = uploadResults.resume?.secure_url;
+
+    if (!resume) {
+      return res.status(400).json({ success: false, message: 'Resume upload failed' });
+    }
+
+    // Check if job exists and is active
+    const job = await Job.findOne({ _id: jobId, isActive: true });
+    if (!job) {
+      return res.status(400).json({ success: false, message: 'Invalid job ID or job is no longer available' });
+    }
+
+    // Create application record
     const application = await Application.create({
-        jobId,
-        firstName,
-        lastName,
-        email,
-        phone,
-        coverLetter: coverLetter || '',
-        resume
+      jobId,
+      firstName,
+      lastName,
+      email,
+      phone,
+      coverLetter: coverLetter || '',
+      resume
     });
 
     res.status(201).json({
-        success: true,
-        data: application
+      success: true,
+      data: application
     });
+  } catch (error) {
+    console.error('Application Error:', error);
+    res.status(500).json({ success: false, message: error.message });
+  }
 };
 
 export const getJobApplications = async (req, res) => {

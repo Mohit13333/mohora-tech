@@ -124,12 +124,6 @@ const navLinks = [
                 className="h-auto w-32"
               />
             </NavLink>
-            <button
-              onClick={toggleMenu}
-              className="text-slate-300 hover:text-white p-2 rounded-lg hover:bg-slate-700/50 transition-all duration-300 transform hover:scale-110"
-            >
-              <FaTimes className="text-xl" />
-            </button>
           </div>
 
           {/* Mobile Navigation Links */}

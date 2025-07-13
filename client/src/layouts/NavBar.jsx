@@ -18,25 +18,26 @@ const NavBar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-const navLinks = [
-  { path: "/", name: "Home", icon: "🏠" },
-  { path: "/about", name: "About Us", icon: "👨‍💼" },
-  { path: "/services", name: "Services", icon: "💻" },
-  { path: "/careers", name: "Careers", icon: "💼" },
-  { path: "/case-studies", name: "Case Studies", icon: "📈" },
-  { path: "/contact", name: "Contact", icon: "✉️" },
-];
+  const navLinks = [
+    { path: "/", name: "Home", icon: "🏠" },
+    { path: "/about", name: "About Us", icon: "👨‍💼" },
+    { path: "/services", name: "Services", icon: "💻" },
+    { path: "/about", name: "About Us", icon: "👨‍💼" },
+    { path: "/careers", name: "Careers", icon: "💼" },
+    { path: "/case-studies", name: "Case Studies", icon: "📈" },
+    { path: "/contact", name: "Contact", icon: "✉️" },
+  ];
 
 
   const renderNavLink = ({ path, name, icon }, isMobile = false) => (
     <NavLink
       key={path}
       to={path}
-      className={({ isActive }) => 
+      className={({ isActive }) =>
         `flex items-center ${isMobile ? 'px-4 py-3 text-base' : 'px-4 py-2.5 text-sm'} 
         font-medium transition-all duration-300 group transform hover:scale-[1.02]
-        ${isActive 
-          ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg' 
+        ${isActive
+          ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg'
           : 'text-slate-300 hover:text-white hover:bg-gradient-to-r hover:from-blue-600/20 hover:to-purple-600/20'
         }
         ${isMobile ? 'rounded-xl' : 'rounded-lg hover:shadow-lg'}`
@@ -58,11 +59,10 @@ const navLinks = [
 
   return (
     <>
-      <nav className={`fixed w-full z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-slate-900/90 backdrop-blur-xl border-b border-slate-700/50 shadow-xl' 
-          : 'bg-transparent border-b border-transparent'
-      }`}>
+      <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled
+        ? 'bg-slate-900/90 backdrop-blur-xl border-b border-slate-700/50 shadow-xl'
+        : 'bg-transparent border-b border-transparent'
+        }`}>
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
@@ -86,15 +86,13 @@ const navLinks = [
               onClick={toggleMenu}
             >
               <div className="relative w-6 h-6 flex items-center justify-center">
-                <FaBars 
-                  className={`absolute transition-all duration-300 ${
-                    isOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
-                  } group-hover:scale-110`} 
+                <FaBars
+                  className={`absolute transition-all duration-300 ${isOpen ? 'opacity-0 rotate-90' : 'opacity-100 rotate-0'
+                    } group-hover:scale-110`}
                 />
-                <FaTimes 
-                  className={`absolute transition-all duration-300 ${
-                    isOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
-                  } group-hover:scale-110`} 
+                <FaTimes
+                  className={`absolute transition-all duration-300 ${isOpen ? 'opacity-100 rotate-0' : 'opacity-0 -rotate-90'
+                    } group-hover:scale-110`}
                 />
               </div>
             </button>
@@ -103,17 +101,15 @@ const navLinks = [
       </nav>
 
       {/* Mobile Overlay */}
-      <div 
-        className={`fixed inset-0 bg-black/70 backdrop-blur-sm z-40 sm:hidden transition-opacity duration-300 ${
-          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-        }`}
+      <div
+        className={`fixed inset-0 bg-black/70 backdrop-blur-sm z-40 sm:hidden transition-opacity duration-300 ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={toggleMenu}
       />
 
       {/* Mobile Side Navbar */}
-      <div className={`fixed top-0 left-0 h-full w-80 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-50 sm:hidden transform transition-transform duration-500 ease-in-out shadow-2xl border-r border-slate-700/50 ${
-        isOpen ? 'translate-x-0' : '-translate-x-full'
-      }`}>
+      <div className={`fixed top-0 left-0 h-full w-80 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 z-50 sm:hidden transform transition-transform duration-500 ease-in-out shadow-2xl border-r border-slate-700/50 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}>
         <div className="flex flex-col h-full">
           {/* Mobile Header */}
           <div className="flex items-center justify-between p-6 border-b border-slate-700/50">

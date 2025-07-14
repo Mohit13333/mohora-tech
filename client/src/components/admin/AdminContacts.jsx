@@ -135,7 +135,7 @@ const AdminContacts = () => {
       {/* Main Content - Full Width */}
       <div className="relative w-full mx-auto py-8">
         <div 
-          className="mb-8 px-4"
+          className="mb-8 px-8"
           data-animate
           id="admin-header"
         >
@@ -147,7 +147,7 @@ const AdminContacts = () => {
           </p>
         </div>
 
-        <ul className="space-y-6 px-4">
+        <ul className="space-y-6 px-8">
           {currentItems.map((contact, index) => (
             <li
               key={contact._id}
@@ -183,7 +183,7 @@ const AdminContacts = () => {
                           selectedContactId === contact._id ? null : contact._id
                         )
                       }
-                      className="group relative px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden w-full md:w-auto"
+                      className="group relative px-8 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden w-full md:w-auto"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                       <span className="relative z-10">
@@ -250,14 +250,14 @@ const AdminContacts = () => {
                         name="reply"
                         value={formData.reply}
                         onChange={(e) => setFormData({ reply: e.target.value })}
-                        className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                        className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-8 py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
                         placeholder="Write your reply..."
                         required
                       />
                       <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-3 mt-4">
                         <button
                           type="submit"
-                          className="group relative px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
+                          className="group relative px-8 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
                         >
                           <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                           <span className="relative z-10">
@@ -268,7 +268,7 @@ const AdminContacts = () => {
                           <button
                             type="button"
                             onClick={handleCancelUpdate}
-                            className="group relative px-6 py-2 bg-gradient-to-r from-slate-600/50 to-slate-700/50 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
+                            className="group relative px-8 py-2 bg-gradient-to-r from-slate-600/50 to-slate-700/50 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
                           >
                             <div className="absolute inset-0 bg-gradient-to-r from-slate-400 to-slate-500 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                             <span className="relative z-10">Cancel</span>
@@ -285,12 +285,12 @@ const AdminContacts = () => {
 
         {/* Pagination Controls */}
         {adminContacts.length > itemsPerPage && (
-          <div className="flex justify-center mt-8 px-4">
+          <div className="flex justify-center mt-8 px-8">
             <div className="flex items-center space-x-2">
               <button
                 onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                 disabled={currentPage === 1}
-                className="px-4 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
+                className="px-8 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
               >
                 Previous
               </button>
@@ -312,7 +312,7 @@ const AdminContacts = () => {
               <button
                 onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                 disabled={currentPage === totalPages}
-                className="px-4 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
+                className="px-8 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
               >
                 Next
               </button>

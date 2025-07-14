@@ -232,7 +232,7 @@ const Home = () => {
 
       {/* Testimonials Section */}
       <section className="py-20 relative">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               What Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Clients Say</span>
@@ -249,7 +249,7 @@ const Home = () => {
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
-                    className="w-full flex-shrink-0 px-4"
+                    className="w-full flex-shrink-0 px-8"
                   >
                     <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-3xl border border-white/20 p-8 lg:p-12 shadow-2xl">
                       {/* Profile Section */}
@@ -336,7 +336,7 @@ const Home = () => {
 
       {/* CTA Section */}
       <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto px-8 text-center">
           <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl rounded-3xl border border-white/10 p-12">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               Ready to Transform Your Business?

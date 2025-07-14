@@ -70,7 +70,7 @@ const NotFound = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto">
+      <div className="relative z-10 text-center">
         
         {/* 404 Number with Advanced Animation */}
         <div className="relative mb-6 sm:mb-8">
@@ -91,7 +91,7 @@ const NotFound = () => {
         </div>
 
         {/* Error Message */}
-        <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-12 px-4">
+        <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-12 px-8">
           <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white animate-fade-in-up">
             Oops! Page Not Found
           </h2>
@@ -102,7 +102,7 @@ const NotFound = () => {
         </div>
 
         {/* Illustration */}
-        <div className="mb-8 sm:mb-12 relative px-4">
+        <div className="mb-8 sm:mb-12 relative px-8">
           <div className="w-48 h-48 sm:w-72 sm:h-72 md:w-96 md:h-96 mx-auto relative animate-float-gentle">
             {/* Placeholder for astronaut/space theme */}
             <div className="w-full h-full bg-gradient-to-br from-slate-700/50 to-slate-800/50 rounded-full backdrop-blur-sm border border-white/10 flex items-center justify-center relative overflow-hidden">
@@ -120,10 +120,10 @@ const NotFound = () => {
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 sm:mb-8 px-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center mb-6 sm:mb-8 px-8">
           <button
             onClick={handleGoHome}
-            className="w-full sm:w-auto group relative px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden"
+            className="w-full sm:w-auto group relative px-8 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
             <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
@@ -135,7 +135,7 @@ const NotFound = () => {
           
           <button
             onClick={handleGoBack}
-            className="w-full sm:w-auto group relative px-6 sm:px-8 py-3 sm:py-4 bg-slate-800/50 border border-slate-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-slate-700/50 hover:border-slate-500 backdrop-blur-sm"
+            className="w-full sm:w-auto group relative px-8 sm:px-8 py-3 sm:py-4 bg-slate-800/50 border border-slate-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-slate-700/50 hover:border-slate-500 backdrop-blur-sm"
           >
             <span className="flex items-center justify-center space-x-2">
               <span>⬅️</span>
@@ -145,7 +145,7 @@ const NotFound = () => {
         </div>
 
         {/* Auto Redirect Countdown */}
-        <div className="text-slate-400 animate-fade-in-up-delay-2 px-4">
+        <div className="text-slate-400 animate-fade-in-up-delay-2 px-8">
           <p className="text-sm sm:text-base">
             Automatically redirecting to home page in 
             <span className="font-bold text-blue-400 mx-1 text-base sm:text-lg animate-pulse">

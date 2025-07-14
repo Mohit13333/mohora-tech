@@ -264,7 +264,7 @@ const ServiceForm = () => {
                       type="file"
                       name="avatar"
                       onChange={handleFileChange}
-                      className="w-full bg-slate-800/50 border border-slate-600 rounded-xl p-4 text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-blue-600 file:to-purple-600 file:text-white hover:file:from-blue-700 hover:file:to-purple-700 transition-all duration-300"
+                      className="w-full bg-slate-800/50 border border-slate-600 rounded-xl p-4 text-white file:mr-4 file:py-2 file:px-8 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gradient-to-r file:from-blue-600 file:to-purple-600 file:text-white hover:file:from-blue-700 hover:file:to-purple-700 transition-all duration-300"
                     />
                   </div>
                 </div>
@@ -272,7 +272,7 @@ const ServiceForm = () => {
                 <div className="flex flex-col sm:flex-row gap-4 pt-4">
                   <button
                     type="submit"
-                    className="group relative flex-1 py-4 px-6 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden"
+                    className="group relative flex-1 py-4 px-8 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-2xl overflow-hidden"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                     <span className="relative z-10">
@@ -284,7 +284,7 @@ const ServiceForm = () => {
                     <button
                       type="button"
                       onClick={cancelEdit}
-                      className="flex-1 py-4 px-6 bg-slate-700/50 border border-slate-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-slate-600/50 backdrop-blur-sm"
+                      className="flex-1 py-4 px-8 bg-slate-700/50 border border-slate-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:bg-slate-600/50 backdrop-blur-sm"
                     >
                       ❌ Cancel
                     </button>
@@ -384,7 +384,7 @@ const ServiceForm = () => {
                   <button
                     onClick={() => paginate(1)}
                     disabled={currentPage === 1}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                    className={`px-8 py-2 rounded-lg font-medium transition-all duration-300 ${
                       currentPage === 1
                         ? 'text-slate-600 cursor-not-allowed'
                         : 'text-blue-400 hover:text-blue-300 hover:bg-blue-600/10'
@@ -404,7 +404,7 @@ const ServiceForm = () => {
                   <button
                     onClick={() => paginate(totalPages)}
                     disabled={currentPage === totalPages}
-                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                    className={`px-8 py-2 rounded-lg font-medium transition-all duration-300 ${
                       currentPage === totalPages
                         ? 'text-slate-600 cursor-not-allowed'
                         : 'text-blue-400 hover:text-blue-300 hover:bg-blue-600/10'
@@ -471,7 +471,7 @@ const ServiceForm = () => {
                     </div>
 
                     {/* Service Footer */}
-                    <div className="px-6 pb-6">
+                    <div className="px-8 pb-6">
                       <button className="w-full py-3 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-blue-500/30 text-blue-300 font-semibold rounded-xl transition-all duration-300 hover:from-blue-600/30 hover:to-purple-600/30 hover:border-blue-400/50 hover:text-blue-200 backdrop-blur-sm">
                         📞 Get Quote
                       </button>
@@ -485,7 +485,7 @@ const ServiceForm = () => {
                   <p className="text-slate-400 mb-6">Start by creating your first service offering</p>
                   <button
                     onClick={toggleForm}
-                    className="inline-flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
+                    className="inline-flex items-center space-x-2 px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl"
                   >
                     <span>🚀</span>
                     <span>Create First Service</span>

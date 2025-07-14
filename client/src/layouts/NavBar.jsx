@@ -1,14 +1,20 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsOpen((prev) => !prev);
   };
+
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,19 +28,17 @@ const NavBar = () => {
     { path: "/", name: "Home", icon: "🏠" },
     { path: "/about", name: "About Us", icon: "👨‍💼" },
     { path: "/services", name: "Services", icon: "💻" },
-    { path: "/about", name: "About Us", icon: "👨‍💼" },
+    { path: "/our-product", name: "Our Product", icon: "🧑‍💻" },
     { path: "/careers", name: "Careers", icon: "💼" },
-    { path: "/case-studies", name: "Case Studies", icon: "📈" },
     { path: "/contact", name: "Contact", icon: "✉️" },
   ];
-
 
   const renderNavLink = ({ path, name, icon }, isMobile = false) => (
     <NavLink
       key={path}
       to={path}
       className={({ isActive }) =>
-        `flex items-center ${isMobile ? 'px-4 py-3 text-base' : 'px-4 py-2.5 text-sm'} 
+        `flex items-center ${isMobile ? 'px-4 py-3 text-base' : 'px-6 py-2.5 text-sm'} 
         font-medium transition-all duration-300 group transform hover:scale-[1.02]
         ${isActive
           ? 'text-white bg-gradient-to-r from-blue-600 to-purple-600 shadow-lg'
@@ -63,7 +67,7 @@ const NavBar = () => {
         ? 'bg-slate-900/90 backdrop-blur-xl border-b border-slate-700/50 shadow-xl'
         : 'bg-transparent border-b border-transparent'
         }`}>
-        <div className="px-4 sm:px-6 lg:px-8">
+        <div className="px-6 sm:px-4 lg:px-8">
           <div className="flex items-center justify-between h-20">
             <div className="flex items-center">
               <NavLink to="/">
@@ -123,7 +127,7 @@ const NavBar = () => {
           </div>
 
           {/* Mobile Navigation Links */}
-          <div className="flex-1 px-4 py-6 space-y-3 overflow-y-auto">
+          <div className="flex-1 px-8 py-6 space-y-3 overflow-y-auto">
             {navLinks.map(link => renderNavLink(link, true))}
           </div>
 

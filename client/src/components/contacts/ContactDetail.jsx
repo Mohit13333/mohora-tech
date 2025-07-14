@@ -80,7 +80,7 @@ const ContactDetail = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="relative max-w-7xl mx-auto px-8 sm:px-8 lg:px-8 py-12">
         <div 
           className="mb-12"
           data-animate
@@ -130,14 +130,14 @@ const ContactDetail = () => {
                   <div className="flex space-x-3">
                     <button
                       onClick={() => handleDeleteContact(contact._id)}
-                      className="group relative px-4 py-2 bg-gradient-to-r from-red-600 to-pink-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
+                      className="group relative px-8 py-2 bg-gradient-to-r from-red-600 to-pink-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                       <span className="relative z-10">Delete</span>
                     </button>
                     <button
                       onClick={() => handleContactClick(contact._id)}
-                      className="group relative px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
+                      className="group relative px-8 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
                     >
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                       <span className="relative z-10">

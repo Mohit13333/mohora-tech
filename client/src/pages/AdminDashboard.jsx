@@ -47,19 +47,19 @@ const AdminSidebar = () => {
         w-64 bg-gradient-to-b from-slate-900 to-slate-800 shadow-lg
         transition-transform duration-300 ease-in-out z-40`}
       >
-        <div className="flex items-center justify-center h-16 px-4 border-b border-slate-700">
+        <div className="flex items-center justify-center h-16 px-8 border-b border-slate-700">
           <h1 className="text-white text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Admin Panel
           </h1>
         </div>
-        <nav className="px-4 py-6">
+        <nav className="px-8 py-6">
           <ul className="space-y-2">
             {navItems.map((item) => (
               <li key={item.path || 'dashboard'}>
                 <Link
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`flex items-center px-4 py-3 rounded-lg transition-colors ${
+                  className={`flex items-center px-8 py-3 rounded-lg transition-colors ${
                     isActive(item.path)
                       ? 'bg-gradient-to-r from-blue-600/30 to-purple-600/30 text-white'
                       : 'text-slate-300 hover:bg-white/10'

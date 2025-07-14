@@ -34,7 +34,7 @@ const ServicePage = () => {
       {/* Content */}
       <div className="relative z-10">
         {/* Header Section */}
-        <div className="pt-20 pb-12 px-6">
+        <div className="pt-20 pb-12 px-8">
           <div className="mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in">
               Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Services</span>
@@ -46,7 +46,7 @@ const ServicePage = () => {
         </div>
 
         {/* Services Grid */}
-        <div className="px-6 pb-20">
+        <div className="px-8 pb-20">
           <div className="mx-auto">
             {services?.length === 0 ? (
               <div className="text-center py-20">
@@ -60,7 +60,7 @@ const ServicePage = () => {
                 {services?.map((service, index) => (
                   <div
                     key={service?._id}
-                    className="group max-w-xs w-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 mx-auto animate-fade-in-up"
+                    className="group w-full bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-xl rounded-2xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 mx-auto animate-fade-in-up"
                     style={{ animationDelay: `${index * 0.1}s` }}
                   >
                     {/* Image Container */}
@@ -97,7 +97,7 @@ const ServicePage = () => {
                             ₹{service?.price}
                           </div> */}
                           <NavLink to="/contact">
-                            <button className="group/btn relative px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden">
+                            <button className="group/btn relative px-8 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden">
                               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
                               <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
                               <span className="relative z-10 text-sm">Learn More</span>

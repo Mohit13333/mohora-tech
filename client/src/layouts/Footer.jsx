@@ -26,18 +26,18 @@ const Footer = () => {
   }, []);
 
   const services = [
-    "Corporate Certifications",
-    "Product Design and Development", 
-    "Web App Development",
-    "Mobile App Development"
+    // { name: "Corporate Certifications", link: "/services/corporate-certifications" },
+    { name: "Product Design and Development", link: "/services" },
+    { name: "Web App Development", link: "/services" },
+    { name: "Mobile App Development", link: "/services" }
   ];
 
   const importantLinks = [
-    "Privacy Policy",
-    "Refund & Cancellations",
-    "Terms & Conditions", 
-    "Hall of Fame",
-    "Certifications"
+    { name: "Privacy Policy", link: "/privacy-policy" },
+    { name: "Refund & Cancellations", link: "/refund-policy" },
+    { name: "Terms & Conditions", link: "/terms-and-conditions" },
+    // { name: "Hall of Fame", link: "/hall-of-fame" },
+    // { name: "Certifications", link: "/certifications" }
   ];
 
   const contactInfo = [
@@ -78,26 +78,26 @@ const Footer = () => {
     }
   ];
 
-const socialLinks = [
-  {
-    name: "Facebook",
-    url: "https://www.facebook.com/share/15uk7YtaNK/",
-    icon: <FaFacebook />,
-    gradient: "from-blue-600 to-blue-500"
-  },
-  {
-    name: "Instagram",
-    url: "https://www.instagram.com/mohoratechnologies/",
-    icon: <FaInstagram />,
-    gradient: "from-pink-600 to-purple-500"
-  },
-  {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/company/mohora-techonologies-pvt-ltd/",
-    icon: <FaLinkedin />,
-    gradient: "from-blue-700 to-blue-600"
-  }
-];
+  const socialLinks = [
+    {
+      name: "Facebook",
+      url: "https://www.facebook.com/share/15uk7YtaNK/",
+      icon: <FaFacebook />,
+      gradient: "from-blue-600 to-blue-500"
+    },
+    {
+      name: "Instagram",
+      url: "https://www.instagram.com/mohoratechnologies/",
+      icon: <FaInstagram />,
+      gradient: "from-pink-600 to-purple-500"
+    },
+    {
+      name: "LinkedIn",
+      url: "https://www.linkedin.com/company/mohora-techonologies-pvt-ltd/",
+      icon: <FaLinkedin />,
+      gradient: "from-blue-700 to-blue-600"
+    }
+  ];
 
   return (
     <footer 
@@ -163,13 +163,16 @@ const socialLinks = [
               {services.map((service, index) => (
                 <li 
                   key={index}
-                  className="group flex items-center space-x-3 text-sm cursor-pointer animate-fade-in-stagger"
+                  className="group flex items-center space-x-3 text-sm animate-fade-in-stagger"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <span className="w-1.5 h-1.5 bg-blue-400 rounded-full group-hover:scale-150 group-hover:bg-purple-400 transition-all duration-300"></span>
-                  <span className="text-slate-300 group-hover:text-white group-hover:translate-x-1 transition-all duration-300">
-                    {service}
-                  </span>
+                  <a
+                    href={service.link}
+                    className="text-slate-300 group-hover:text-white group-hover:translate-x-1 transition-all duration-300 block w-full"
+                  >
+                    {service.name}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -187,13 +190,16 @@ const socialLinks = [
               {importantLinks.map((link, index) => (
                 <li 
                   key={index}
-                  className="group flex items-center space-x-3 text-sm cursor-pointer animate-fade-in-stagger"
+                  className="group flex items-center space-x-3 text-sm animate-fade-in-stagger"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <span className="w-1.5 h-1.5 bg-blue-400 rounded-full group-hover:scale-150 group-hover:bg-purple-400 transition-all duration-300"></span>
-                  <span className="text-slate-300 group-hover:text-white group-hover:translate-x-1 transition-all duration-300">
-                    {link}
-                  </span>
+                  <a
+                    href={link.link}
+                    className="text-slate-300 group-hover:text-white group-hover:translate-x-1 transition-all duration-300 block w-full"
+                  >
+                    {link.name}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -203,7 +209,7 @@ const socialLinks = [
           <div className="space-y-8 flex flex-col items-center lg:items-start">
             {/* Logo */}
             <div className="text-center lg:text-left">
-              <div className="group cursor-pointer">
+              <a href="/" className="group cursor-pointer block">
                 <img
                   src="https://res.cloudinary.com/mohitsingh8954/image/upload/v1738087360/Figma_basics_1_dnzwnz.svg"
                   alt="Mohora Technologies Logo"
@@ -215,7 +221,7 @@ const socialLinks = [
                 <p className="text-slate-400 text-sm mt-2">
                   Pvt Ltd
                 </p>
-              </div>
+              </a>
             </div>
 
             {/* Social Media Links */}
@@ -228,7 +234,7 @@ const socialLinks = [
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group relative w-12 h-12 bg-gradient-to-r ${social.color} rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl animate-bounce-gentle overflow-hidden`}
+                    className={`group relative w-12 h-12 bg-gradient-to-r ${social.gradient} rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-2xl animate-bounce-gentle overflow-hidden`}
                     style={{ animationDelay: `${index * 0.2}s` }}
                   >
                     <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>

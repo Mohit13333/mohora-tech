@@ -59,7 +59,7 @@ const Faq = () => {
       </div>
 
       {/* Main Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="relative max-w-7xl mx-auto px-8 sm:px-8 lg:px-8 py-20">
         {/* Two-column layout for larger screens */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           {/* Left column - Banner/Logo (Animated) */}
@@ -80,7 +80,7 @@ const Faq = () => {
                   <a
                     href="mailto:mohoratechnologiespvtltd@gmail.com"
                   >
-                    <button className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
+                    <button className="group relative px-8 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 hover:shadow-xl overflow-hidden">
                       <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                       <div className="absolute inset-0 bg-white/10 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700 skew-x-12"></div>
                       <span className="relative z-10 flex items-center justify-center space-x-2">

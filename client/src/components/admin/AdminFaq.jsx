@@ -123,7 +123,7 @@ const AdminFaq = () => {
               value={formData.title}
               required
               onChange={handleChange}
-              className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-3 text-slate-200 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-8 py-3 text-slate-200 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
               placeholder="Title"
             />
             <textarea
@@ -131,7 +131,7 @@ const AdminFaq = () => {
               value={formData.description}
               required
               onChange={handleChange}
-              className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-4 py-3 text-slate-200 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+              className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-8 py-3 text-slate-200 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
               placeholder="Description"
               rows="5"
             ></textarea>
@@ -139,14 +139,14 @@ const AdminFaq = () => {
               {editIndex ? (
                 <>
                   <button
-                    className="group relative px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
+                    className="group relative px-8 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
                     onClick={() => updateFaq(editIndex)}
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                     <span className="relative z-10">Update FAQ</span>
                   </button>
                   <button
-                    className="group relative px-6 py-2 bg-gradient-to-r from-slate-600/50 to-slate-700/50 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
+                    className="group relative px-8 py-2 bg-gradient-to-r from-slate-600/50 to-slate-700/50 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
                     onClick={() => {
                       setEditIndex(null);
                       setFormData({ title: "", description: "" });
@@ -158,7 +158,7 @@ const AdminFaq = () => {
                 </>
               ) : (
                 <button
-                  className="group relative px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
+                  className="group relative px-8 py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden"
                   onClick={() => createFaqs(formData)}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
@@ -205,7 +205,7 @@ const AdminFaq = () => {
                         <p className="text-slate-300 mb-4">{faq.description}</p>
                         <div className="flex space-x-3">
                           <button
-                            className="group relative px-4 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                            className="group relative px-8 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 overflow-hidden"
                             onClick={() => {
                               setEditIndex(faq._id);
                               setFormData({
@@ -220,7 +220,7 @@ const AdminFaq = () => {
                             </span>
                           </button>
                           <button
-                            className="group relative px-4 py-2 bg-gradient-to-r from-red-600/50 to-pink-600/50 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 overflow-hidden"
+                            className="group relative px-8 py-2 bg-gradient-to-r from-red-600/50 to-pink-600/50 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 overflow-hidden"
                             onClick={() => deleteFaq(faq._id)}
                           >
                             <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
@@ -242,7 +242,7 @@ const AdminFaq = () => {
                     <button
                       onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                       disabled={currentPage === 1}
-                      className="px-4 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
+                      className="px-8 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
                     >
                       Previous
                     </button>
@@ -264,7 +264,7 @@ const AdminFaq = () => {
                     <button
                       onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                       disabled={currentPage === totalPages}
-                      className="px-4 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
+                      className="px-8 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
                     >
                       Next
                     </button>

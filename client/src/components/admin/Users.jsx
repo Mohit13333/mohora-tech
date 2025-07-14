@@ -86,7 +86,7 @@ const Users = () => {
       {/* Main Content */}
       <div className="relative w-full mx-auto py-8">
         <div 
-          className="mb-8 px-4"
+          className="mb-8 px-8"
           data-animate
           id="users-header"
         >
@@ -104,7 +104,7 @@ const Users = () => {
           </div>
         ) : (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-8">
               {currentItems.map((user, index) => (
                 <div
                   key={user._id}
@@ -127,7 +127,7 @@ const Users = () => {
                     <div className="flex justify-center">
                       <button
                         onClick={() => deleteUsers(user._id)}
-                        className="group relative px-4 py-2 bg-gradient-to-r from-red-600 to-pink-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden w-full"
+                        className="group relative px-8 py-2 bg-gradient-to-r from-red-600 to-pink-600 text-white font-medium rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden w-full"
                       >
                         <div className="absolute inset-0 bg-gradient-to-r from-red-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                         <span className="relative z-10">Delete User</span>
@@ -140,12 +140,12 @@ const Users = () => {
 
             {/* Pagination Controls */}
             {adminUsers.length > itemsPerPage && (
-              <div className="flex justify-center mt-8 px-4">
+              <div className="flex justify-center mt-8 px-8">
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                     disabled={currentPage === 1}
-                    className="px-4 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
+                    className="px-8 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
                   >
                     Previous
                   </button>
@@ -167,7 +167,7 @@ const Users = () => {
                   <button
                     onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                     disabled={currentPage === totalPages}
-                    className="px-4 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
+                    className="px-8 py-2 bg-gradient-to-r from-blue-600/50 to-purple-600/50 text-white rounded-lg disabled:opacity-50 transition-all duration-300 hover:scale-105"
                   >
                     Next
                   </button>

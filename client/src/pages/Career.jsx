@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaBriefcase, FaMapMarkerAlt, FaClock, FaDollarSign, FaUsers, FaRocket, FaHeart, FaGraduationCap, FaChevronDown, FaChevronUp, FaSpinner, FaCheck, FaTimes, FaUpload } from 'react-icons/fa';
 
-const API_BASE_URL = 'http://localhost:8080/api';
-
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URI;
 const Career = () => {
   const [jobListings, setJobListings] = useState([]);
   const [expandedJob, setExpandedJob] = useState(null);
@@ -230,7 +229,7 @@ const Career = () => {
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20"></div>
-        <div className="relative max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative max-w-screen-xl mx-auto px-8 sm:px-8 lg:px-8 py-20">
           <div className="text-center">
             <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
               Join Our Team
@@ -257,7 +256,7 @@ const Career = () => {
       </div>
 
       {/* Benefits Section */}
-      <div id="benefits-section" className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div id="benefits-section" className="max-w-screen-xl mx-auto px-8 sm:px-8 lg:px-8 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
             Why Mohora Technologies?
@@ -288,7 +287,7 @@ const Career = () => {
       </div>
 
       {/* Job Listings Section */}
-      <div id="jobs-section" className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div id="jobs-section" className="max-w-screen-xl mx-auto px-8 sm:px-8 lg:px-8 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Open Positions
@@ -303,7 +302,7 @@ const Career = () => {
           <select 
             value={filters.department} 
             onChange={(e) => handleFilterChange('department', e.target.value)}
-            className="bg-slate-800 text-white px-4 py-2 rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none"
+            className="bg-slate-800 text-white px-8 py-2 rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none"
           >
             <option value="">All Departments</option>
             <option value="Engineering">Engineering</option>
@@ -315,7 +314,7 @@ const Career = () => {
           <select 
             value={filters.location} 
             onChange={(e) => handleFilterChange('location', e.target.value)}
-            className="bg-slate-800 text-white px-4 py-2 rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none"
+            className="bg-slate-800 text-white px-8 py-2 rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none"
           >
             <option value="">All Locations</option>
             <option value="Mumbai">Mumbai</option>
@@ -327,7 +326,7 @@ const Career = () => {
           <select 
             value={filters.type} 
             onChange={(e) => handleFilterChange('type', e.target.value)}
-            className="bg-slate-800 text-white px-4 py-2 rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none"
+            className="bg-slate-800 text-white px-8 py-2 rounded-lg border border-slate-600 focus:border-blue-500 focus:outline-none"
           >
             <option value="">All Types</option>
             <option value="Full-time">Full-time</option>
@@ -353,7 +352,7 @@ const Career = () => {
               <p className="text-red-300">{error}</p>
               <button 
                 onClick={fetchJobs}
-                className="mt-4 bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition-colors duration-300"
+                className="mt-4 bg-red-600 hover:bg-red-700 text-white px-8 py-2 rounded-lg transition-colors duration-300"
               >
                 Try Again
               </button>
@@ -421,7 +420,7 @@ const Career = () => {
                             e.stopPropagation();
                             handleApplyClick(job);
                           }}
-                          className="text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                          className="text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
                         >
                           Apply Now
                         </button>
@@ -491,7 +490,7 @@ const Career = () => {
                     name="firstName"
                     value={formData.firstName}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
+                    className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-8 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
                     placeholder="Enter your first name"
                     disabled={isSubmitting}
                   />
@@ -509,7 +508,7 @@ const Career = () => {
                     name="lastName"
                     value={formData.lastName}
                     onChange={handleInputChange}
-                    className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
+                    className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-8 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
                     placeholder="Enter your last name"
                     disabled={isSubmitting}
                   />
@@ -528,7 +527,7 @@ const Career = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
+                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-8 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
                   placeholder="Enter your email address"
                   disabled={isSubmitting}
                 />
@@ -546,7 +545,7 @@ const Career = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleInputChange}
-                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
+                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-8 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300"
                   placeholder="Enter your phone number"
                   disabled={isSubmitting}
                 />
@@ -570,7 +569,7 @@ const Career = () => {
                   />
                   <label
                     htmlFor="resume-upload"
-                    className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white cursor-pointer hover:border-blue-500 transition-colors duration-300 flex items-center justify-center gap-2"
+                    className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-8 py-3 text-white cursor-pointer hover:border-blue-500 transition-colors duration-300 flex items-center justify-center gap-2"
                   >
                     <FaUpload />
                     {formData.resume ? formData.resume.name : 'Upload Resume (PDF, DOC, DOCX)'}
@@ -590,7 +589,7 @@ const Career = () => {
                   value={formData.coverLetter}
                   onChange={handleInputChange}
                   rows={4}
-                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-4 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300 resize-none"
+                  className="w-full bg-slate-700/50 border border-slate-600 rounded-lg px-8 py-3 text-white placeholder-slate-400 focus:border-blue-500 focus:outline-none transition-colors duration-300 resize-none"
                   placeholder="Tell us why you're interested in this position..."
                   disabled={isSubmitting}
                 />
@@ -600,14 +599,14 @@ const Career = () => {
                 <button
                   type="button"
                   onClick={() => setShowApplicationForm(false)}
-                  className="flex-1 bg-slate-700 hover:bg-slate-600 text-white px-6 py-3 rounded-lg font-medium transition-colors duration-300"
+                  className="flex-1 bg-slate-700 hover:bg-slate-600 text-white px-8 py-3 rounded-lg font-medium transition-colors duration-300"
                   disabled={isSubmitting}
                 >
                   Cancel
                 </button>
                 <button
                   type="submit"
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+                  className="flex-1 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-3 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? (
@@ -626,7 +625,7 @@ const Career = () => {
       )}
 
       {/* Application Process Section */}
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-screen-xl mx-auto px-8 sm:px-8 lg:px-8 py-20">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-emerald-400 to-teal-400 bg-clip-text text-transparent">
             Our Hiring Process
@@ -678,7 +677,7 @@ const Career = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div className="max-w-screen-xl mx-auto px-8 sm:px-8 lg:px-8 py-20">
         <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 backdrop-blur-lg border border-slate-700/50 rounded-2xl p-12 text-center">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
             Ready to Join Us?

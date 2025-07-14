@@ -181,7 +181,7 @@ const InvoiceGenerator = () => {
           <div className="flex flex-wrap gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={handlePrint}
-              className="group relative px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden text-sm sm:text-base"
+              className="group relative px-3 py-2 sm:px-8 sm:py-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden text-sm sm:text-base"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
               <span className="relative z-10 flex items-center gap-1 sm:gap-2">
@@ -190,7 +190,7 @@ const InvoiceGenerator = () => {
             </button>
             <button
               onClick={handleDownloadPDF}
-              className="group relative px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden disabled:opacity-50 text-sm sm:text-base"
+              className="group relative px-3 py-2 sm:px-8 sm:py-2 bg-gradient-to-r from-green-600 to-teal-600 text-white rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden disabled:opacity-50 text-sm sm:text-base"
               disabled={isLoading}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-teal-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
@@ -201,7 +201,7 @@ const InvoiceGenerator = () => {
             </button>
             <button
               onClick={handleSendEmail}
-              className="group relative px-3 py-2 sm:px-4 sm:py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden disabled:opacity-50 text-sm sm:text-base"
+              className="group relative px-3 py-2 sm:px-8 sm:py-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg overflow-hidden disabled:opacity-50 text-sm sm:text-base"
               disabled={isLoading || !invoice.clientEmail}
             >
               <div className="absolute inset-0 bg-gradient-to-r from-purple-400 to-pink-400 opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
@@ -235,18 +235,18 @@ const InvoiceGenerator = () => {
                   type="text"
                   value={invoice.companyName}
                   onChange={(e) => updateInvoice('companyName', e.target.value)}
-                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
+                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
                 />
                 <textarea
                   value={invoice.companyAddress}
                   onChange={(e) => updateInvoice('companyAddress', e.target.value)}
-                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 h-20 sm:h-24 resize-none text-sm sm:text-base"
+                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 h-20 sm:h-24 resize-none text-sm sm:text-base"
                 />
                 <input
                   type="email"
                   value={invoice.companyEmail}
                   onChange={(e) => updateInvoice('companyEmail', e.target.value)}
-                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
+                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
                 />
               </div>
             </div>
@@ -259,19 +259,19 @@ const InvoiceGenerator = () => {
                   type="text"
                   value={invoice.invoiceNumber}
                   onChange={(e) => updateInvoice('invoiceNumber', e.target.value)}
-                  className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
+                  className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
                 />
                 <input
                   type="date"
                   value={invoice.date}
                   onChange={(e) => updateInvoice('date', e.target.value)}
-                  className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
+                  className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
                 />
                 <input
                   type="date"
                   value={invoice.dueDate}
                   onChange={(e) => updateInvoice('dueDate', e.target.value)}
-                  className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
+                  className="bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
                 />
               </div>
             </div>
@@ -285,20 +285,20 @@ const InvoiceGenerator = () => {
                   placeholder="Client Name"
                   value={invoice.clientName}
                   onChange={(e) => updateInvoice('clientName', e.target.value)}
-                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
+                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
                 />
                 <textarea
                   placeholder="Client Address"
                   value={invoice.clientAddress}
                   onChange={(e) => updateInvoice('clientAddress', e.target.value)}
-                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 h-20 sm:h-24 resize-none text-sm sm:text-base"
+                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 h-20 sm:h-24 resize-none text-sm sm:text-base"
                 />
                 <input
                   type="email"
                   placeholder="Client Email *"
                   value={invoice.clientEmail}
                   onChange={(e) => updateInvoice('clientEmail', e.target.value)}
-                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
+                  className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 text-sm sm:text-base"
                   required
                 />
               </div>
@@ -362,13 +362,13 @@ const InvoiceGenerator = () => {
                 placeholder="Additional Notes"
                 value={invoice.notes}
                 onChange={(e) => updateInvoice('notes', e.target.value)}
-                className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 h-16 sm:h-20 resize-none text-sm sm:text-base"
+                className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 h-16 sm:h-20 resize-none text-sm sm:text-base"
               />
               <textarea
                 placeholder="Terms and Conditions"
                 value={invoice.terms}
                 onChange={(e) => updateInvoice('terms', e.target.value)}
-                className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-4 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 h-16 sm:h-20 resize-none text-sm sm:text-base"
+                className="w-full bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg px-3 py-2 sm:px-8 sm:py-3 text-slate-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 h-16 sm:h-20 resize-none text-sm sm:text-base"
               />
             </div>
           </div>

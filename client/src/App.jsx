@@ -23,6 +23,10 @@ import ServiceForm from "./components/admin/ServiceForm";
 import AdminContacts from "./components/admin/AdminContacts";
 import InvoiceGenerator from "./components/admin/InvoiceGenerator InvoiceGenerator";
 import About from "./components/About-us/AboutUs";
+import Products from "./components/Our-Product/OurProduct";
+import TermsAndConditions from "./components/About-us/TermAndCondition";
+import PrivacyPolicy from "./components/About-us/PrivacyPolicy";
+import RefundPolicy from "./components/About-us/RefundPolicy";
 
 function App() {
   const dispatch = useDispatch();
@@ -58,6 +62,10 @@ function App() {
               <Route path="/faqs" element={<FaqPage />}></Route>
               <Route path="/contact-details" element={<ContactDetail />}></Route>
               <Route path="/careers" element={<Career />}></Route>
+              <Route path="/our-product" element={<Products />}></Route>
+              <Route path="/terms-and-conditions" element={<TermsAndConditions />}></Route>
+              <Route path="/privacy-policy" element={<PrivacyPolicy />}></Route>
+              <Route path="/refund-policy" element={<RefundPolicy />}></Route>
               <Route path="/about" element={<About />}></Route>
 
               {/* Nested Admin Routes */}

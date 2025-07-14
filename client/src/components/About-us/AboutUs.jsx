@@ -76,7 +76,7 @@ const About = () => {
 
       {/* Our Story Section */}
       <section className="py-20 relative">
-        <div className="mx-auto px-6">
+        <div className="mx-auto px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
               <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
@@ -101,7 +101,7 @@ const About = () => {
 
       {/* Mission & Values Section */}
       <section className="py-20 relative bg-slate-800/20 backdrop-blur-sm">
-        <div className="mx-auto px-6">
+        <div className="mx-auto px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
               Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Mission</span> & Values
@@ -144,7 +144,7 @@ const About = () => {
 
       {/* Team Section */}
 <section className="py-20 relative">
-  <div className="mx-auto px-6 max-w-7xl">
+  <div className="mx-auto px-8 max-w-7xl">
     <div className="text-center mb-16">
       <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
         Meet Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Team</span>
@@ -208,7 +208,7 @@ const About = () => {
 
       {/* Milestones Section */}
       {/* <section className="py-20 relative bg-slate-800/20 backdrop-blur-sm">
-        <div className="mx-auto px-6">
+        <div className="mx-auto px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
               Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Journey</span>
@@ -241,7 +241,7 @@ const About = () => {
 
       {/* CTA Section */}
       <section className="py-20 relative">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+        <div className="max-w-4xl mx-auto px-8 text-center">
           <div className="bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-xl rounded-3xl border border-white/10 p-12">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
               Want to Join Our Team?

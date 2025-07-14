@@ -1,35 +1,56 @@
 import Contact from "../models/contact.model.js";
 import ContactReply from "../models/contactReply.model.js";
+import { contactEmailTemplate, sendEmail } from "../utils/mailer.js";
 
 export const createContact = async (req, res) => {
   try {
     const { email, phoneNumber, message } = req.body;
+    
+    // Validate input
     if (!email || !phoneNumber || !message) {
-      return res
-        .status(400)
-        .json({ message: "Email, phone number, and message are required." });
+      return res.status(400).json({ 
+        message: "Email, phone number, and message are required.",
+        error: true,
+        success: false
+      });
     }
-    await Contact.create({
-      email,
-      phoneNumber,
-      message,
-      user: req.user.id,
-    });
+
+    // Save to database
+    const newContact = await Contact.create({ email, phoneNumber, message });
+
+    // Prepare email data
+    const emailData = { email, phoneNumber, message };
+    const adminEmail = process.env.ADMIN_EMAIL || 'mohoratechnologiespvtltd@gmail.com';
+
+    try {
+      // Send email to admin
+      const adminTemplate = contactEmailTemplate(emailData, true);
+      await sendEmail(adminEmail, adminTemplate.subject, adminTemplate.html);
+
+      // Send confirmation email to user
+      const userTemplate = contactEmailTemplate(emailData);
+      await sendEmail(email, userTemplate.subject, userTemplate.html);
+    } catch (emailError) {
+      console.error('Email sending failed:', emailError);
+      // Continue even if email fails
+    }
+
     return res.status(201).json({
-      message:
-        "Thank You for contacting us.You will get revert back in 24 Hours.",
+      message: "Thank you for contacting us. You'll receive a confirmation email shortly.",
+      contact: newContact,
       error: false,
       success: true,
     });
+
   } catch (error) {
-    return res.status(400).json({
-      message: "Failed to contact.please contact by mention details",
+    console.error('Contact form error:', error);
+    return res.status(500).json({
+      message: "Failed to process your request. Please try again later or contact us directly.",
       error: true,
       success: false,
     });
   }
 };
-
 export const getContactsByUserId = async (req, res) => {
   try {
     const userId = req.user.id;

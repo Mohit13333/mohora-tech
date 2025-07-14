@@ -21,7 +21,7 @@ const contactEmailTemplate = (data, isAdminCopy = false) => {
   const logoUrl = "https://res.cloudinary.com/mohitsingh8954/image/upload/v1738082749/Screenshot_2025-01-25_2034390_ouytfn.png";
   const companyName = "Mohora Technologies Pvt. Ltd.";
   const supportEmail = "support@mohoratechnologies.com";
-  const websiteUrl = "https://mohoratechnologies.netlify.app/";
+  const websiteUrl = "https://mohoratechnologies.netlify.app";
   const currentYear = new Date().getFullYear();
 
   const html = `
@@ -186,7 +186,7 @@ const contactEmailTemplate = (data, isAdminCopy = false) => {
           <p>&copy; ${currentYear} ${companyName}. All rights reserved.</p>
           <p>
             <a href="${websiteUrl}">Visit our website</a> | 
-            <a href="${websiteUrl}/privacy">Privacy Policy</a> | 
+            <a href="${websiteUrl}/privacy-policy">Privacy Policy</a> | 
             <a href="mailto:${supportEmail}">Contact Support</a>
           </p>
           <p>

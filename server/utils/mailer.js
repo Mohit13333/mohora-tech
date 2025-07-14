@@ -20,7 +20,7 @@ const contactEmailTemplate = (data, isAdminCopy = false) => {
 
   const logoUrl = "https://res.cloudinary.com/mohitsingh8954/image/upload/v1738082749/Screenshot_2025-01-25_2034390_ouytfn.png";
   const companyName = "Mohora Technologies Pvt. Ltd.";
-  const supportEmail = "support@mohoratechnologies.com";
+  const supportEmail = "mohoratechnologiespvtltd@gmail.com";
   const websiteUrl = "https://mohoratechnologies.netlify.app";
   const currentYear = new Date().getFullYear();
 

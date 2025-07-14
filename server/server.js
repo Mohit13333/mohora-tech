@@ -13,6 +13,7 @@ import jobRouter from "./routes/job.route.js"
 import connectDB from "./config/connectDB.js";
 import cron from "node-cron";
 import axios from "axios";
+import bookingRouter from "./routes/booking.route.js";
 
 const app = express();
 app.use(express.json());
@@ -53,6 +54,7 @@ app.use("/api/faqs", faqRouter);
 app.use("/api/contacts", contactRouter);
 app.use("/api/jobapply", applicationRouter);
 app.use("/api/jobs", jobRouter);
+app.use("/api/bookings", bookingRouter);
 connectDB()
   .then(() => {
     app.listen(process.env.PORT, () => {

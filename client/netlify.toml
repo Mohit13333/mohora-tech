@@ -3,3 +3,4 @@
   to = "http://13.233.151.145/:splat"
   status = 200
   force = true
+  origin = "*"
